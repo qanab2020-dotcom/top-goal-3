@@ -1,0 +1,457 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Top Goal 3 - التطبيق المتكامل الملون</title>
+<style>
+body{font-family:Tahoma;background:#fffbeb;margin:0;padding:10px;text-align:center;transition:background 0.5s}
+h1{color:#92400e;font-size:18px}
+.section-title{color:#b45309;font-size:13px;margin:8px 0 4px;font-weight:bold}
+.tab{padding:5px 8px;border-radius:12px;border:none;background:#fff;box-shadow:0 2px 4px #0001;margin:2px;font-size:10px;cursor:pointer}
+.tab.active{background:#f59e0b;color:white;font-weight:bold}
+
+/* بطاقات المطابقة */
+.card{width:75px;height:75px;background:white;border-radius:12px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;margin:3px;box-shadow:0 2px 6px #0002;cursor:pointer;font-size:11px}
+.card.open{background:#22c55e;color:white}
+#grid{max-width:420px;margin:6px auto;display:flex;flex-wrap:wrap;justify-content:center}
+
+/* بطاقات المراجعة السريعة Flashcards */
+.flashcard-container{perspective:1000px;width:220px;height:130px;margin:15px auto;cursor:pointer}
+.flashcard{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 0.6s;border-radius:14px;box-shadow:0 4px 10px #0002}
+.flashcard.flipped{transform:rotateY(180deg)}
+.flashcard-face{position:absolute;width:100%;height:100%;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:14px;font-size:18px;font-weight:bold}
+.flashcard-front{background:#ffffff;color:#92400e;border:2px solid #f59e0b}
+.flashcard-back{background:#f59e0b;color:white;transform:rotateY(180deg)}
+
+.box-card{background:white;max-width:410px;margin:8px auto;padding:12px;border-radius:16px;box-shadow:0 4px 15px #0002;border:2px solid #fde68a}
+button.m{padding:8px 12px;background:#d97706;color:white;border:none;border-radius:10px;margin:3px;font-size:12px;cursor:pointer}
+button.mic{background:#ef4444;font-size:14px;padding:10px 16px;border-radius:30px}
+button.mic.listen{background:#22c55e;animation:pulse 1s infinite}
+@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.08)}100%{transform:scale(1)}}
+#bar{height:10px;background:#fde68a;border-radius:10px;max-width:410px;margin:6px auto}
+#bar>div{height:100%;background:#16a34a;width:0%;transition:0.4s}
+.word-chip{display:inline-block;padding:5px 10px;background:#fef3c7;border:1px solid #f59e0b;border-radius:8px;margin:3px;cursor:pointer;font-weight:bold;color:#92400e;font-size:12px}
+</style>
+</head>
+<body>
+<h1>📚 Top Goal 3 - المنهج الملون والمطور</h1>
+<div id="bar"><div id="fill"></div></div>
+<div id="stars">⭐ 0 نقطة</div>
+
+<div class="section-title">📖 كتاب الطالب (Student's Book)</div>
+<div id="studentTabs"></div>
+
+<div class="section-title">✍️ كتاب النشاط (Workbook)</div>
+<div id="workbookTabs"></div>
+
+<div id="msg" style="margin:8px;font-weight:bold;color:#b45309;font-size:13px">اختر وحدة للبدء بالتعلم</div>
+
+<!-- قسم المراجعة السريعة Flashcards -->
+<div id="flashcardArea" style="display:none">
+  <div class="flashcard-container" onclick="flipCard()">
+    <div class="flashcard" id="fCard">
+      <div class="flashcard-face flashcard-front" id="fFront">وجه الكلمة</div>
+      <div class="flashcard-face flashcard-back" id="fBack">وجه المعنى</div>
+    </div>
+  </div>
+  <div>
+    <button class="m" onclick="prevFlash()">⬅️ السابقة</button>
+    <button class="m" onclick="nextFlash()">التالية ➡️</button>
+    <button class="m" onclick="switchToGame()" style="background:#16a34a">🎮 العب المطابقة</button>
+  </div>
+</div>
+
+<div id="gameArea" style="display:none">
+  <div id="grid"></div>
+  <button class="m" onclick="switchToFlash()" style="background:#6366f1;margin-top:10px">📖 رجوع للمراجعة السريعة</button>
+</div>
+
+<div class="box-card" id="grammarBox" style="display:none">
+  <h3>🧩 تدريب ترتيب الجمل والقواعد</h3>
+  <p id="grammarPrompt" style="font-size:13px;color:#666;font-weight:bold;"></p>
+  <div id="targetSentence" style="min-height:35px;background:#f9fafb;border:2px dashed #d1d5db;border-radius:8px;padding:6px;margin-bottom:8px;"></div>
+  <div id="sourceWords"></div>
+  <br>
+  <button class="m" onclick="checkOrder()">تحقق من الإجابة</button>
+  <button class="m" onclick="loadGrammar()">إعادة ضبط</button>
+  <p id="gramMsg" style="font-weight:bold;font-size:14px;margin-top:6px;"></p>
+</div>
+
+<div class="box-card" id="qbox" style="display:none">
+  <p id="qen" style="font-weight:bold;font-size:18px;color:#92400e"></p>
+  <p id="qar" style="color:#666;font-size:12px"></p>
+  <button class="m" onclick="speakQ()">🔊 استمع</button><br><br>
+  <button class="m mic" id="micBtn" onclick="startListen()">🎤 انطق الكلمة</button>
+  <p id="heard" style="font-size:11px;color:#888"></p>
+  <div id="opts"></div>
+  <p id="qmsg" style="font-weight:bold;font-size:14px"></p>
+</div>
+
+<script>
+const studentBooks = {
+  "Welcome": [
+    {en:"cookie",ar:"بسكويت",ic:"🍪",s:"I like a cookie"},
+    {en:"gate",ar:"بوابة",ic:"🚪",s:"Open the gate"},
+    {en:"helmet",ar:"خوذة",ic:"⛑️",s:"Wear your helmet"},
+    {en:"journalist",ar:"صحفي",ic:"🎤",s:"He is a journalist"},
+    {en:"taxi",ar:"سيارة أجرة",ic:"🚕",s:"Call a taxi"}
+  ],
+  "U1 Living Things": [
+    {en:"Mammal",ar:"ثديي",ic:"🐋",s:"Dolphin is a mammal"},
+    {en:"Reptile",ar:"زاحف",ic:"🦎",s:"Lizard is a reptile"},
+    {en:"Habitat",ar:"موطن",ic:"🌳",s:"Desert is a habitat"},
+    {en:"Vertebrate",ar:"فقاري",ic:"🦴",s:"Birds are vertebrates"}
+  ],
+  "U2 Lifestyles": [
+    {en:"Healthy diet",ar:"غذاء صحي",ic:"🥗",s:"Healthy diet"},
+    {en:"Exercise",ar:"تمارين",ic:"🏃",s:"Exercise daily"},
+    {en:"Sleep early",ar:"نم مبكرا",ic:"😴",s:"Sleep early"},
+    {en:"Stress",ar:"توتر",ic:"😰",s:"Reduce stress"}
+  ],
+  "U3 Interests": [
+    {en:"Photography",ar:"تصوير",ic:"📸",s:"Photography is my hobby"},
+    {en:"Reading",ar:"قراءة",ic:"📚",s:"Reading is useful"},
+    {en:"Drawing",ar:"رسم",ic:"🎨",s:"Drawing is fun"},
+    {en:"Gaming",ar:"ألعاب",ic:"🎮",s:"Gaming is fun"}
+  ],
+  "U4 Professions": [
+    {en:"Engineer",ar:"مهندس",ic:"👷",s:"My father is engineer"},
+    {en:"Pilot",ar:"طيار",ic:"✈️",s:"Pilot flies plane"},
+    {en:"Doctor",ar:"طبيب",ic:"👨‍⚕️",s:"Doctor helps people"},
+    {en:"Chef",ar:"طباخ",ic:"👨‍🍳",s:"Chef cooks well"}
+  ],
+  "U5 House": [
+    {en:"Kitchen",ar:"مطبخ",ic:"🍳",s:"Kitchen is big"},
+    {en:"Bedroom",ar:"غرفة نوم",ic:"🛏️",s:"My bedroom is clean"},
+    {en:"Garage",ar:"كراج",ic:"🚗",s:"Car in garage"},
+    {en:"Garden",ar:"حديقة",ic:"🌳",s:"Garden is beautiful"}
+  ],
+  "U6 Accidents": [
+    {en:"Fall down",ar:"يسقط",ic:"🤕",s:"Don't fall down"},
+    {en:"Burn",ar:"يحترق",ic:"🔥",s:"Don't burn"},
+    {en:"Cut",ar:"يجرح",ic:"🩹",s:"I cut my finger"},
+    {en:"First aid",ar:"إسعافات",ic:"🚑",s:"First aid kit"}
+  ],
+  "U7 Wildlife": [
+    {en:"Lion",ar:"أسد",ic:"🦁",s:"Lion is king"},
+    {en:"Elephant",ar:"فيل",ic:"🐘",s:"Elephant is huge"},
+    {en:"Panda",ar:"باندا",ic:"🐼",s:"Panda eats bamboo"},
+    {en:"Tiger",ar:"نمر",ic:"🐯",s:"Tiger is fast"}
+  ],
+  "U8 Weather": [
+    {en:"Sunny",ar:"مشمس",ic:"☀️",s:"Today is sunny"},
+    {en:"Rainy",ar:"ممطر",ic:"🌧️",s:"It is rainy"},
+    {en:"Cloudy",ar:"غائم",ic:"☁️",s:"Sky is cloudy"},
+    {en:"Windy",ar:"رياح",ic:"💨",s:"It is windy"}
+  ]
+};
+
+const workbookData = {
+  "WB U1": [
+    {en:"Insects",ar:"حشرات",ic:"🐞",s:"Insects are eaten by other animals"},
+    {en:"Tortoise",ar:"سلحفاة",ic:"🐢",s:"Tortoises are found in mountains"},
+    {en:"Desert",ar:"صحراء",ic:"🏜️",s:"The desert is where camels live"},
+    {en:"Ocean",ar:"محيط",ic:"🌊",s:"The ocean is where dolphins are found"}
+  ],
+  "WB U2": [
+    {en:"Walking",ar:"مشي",ic:"🚶",s:"Walking is good for health"},
+    {en:"Water",ar:"ماء",ic:"💧",s:"Drink enough water"},
+    {en:"Relax",ar:"استرخاء",ic:"🌿",s:"Relax every day"}
+  ],
+  "WB U3": [
+    {en:"Camera",ar:"كاميرا",ic:"📷",s:"Use camera to take photos"},
+    {en:"Book",ar:"كتاب",ic:"📖",s:"Read books in library"}
+  ],
+  "WB U4": [
+    {en:"Hospital",ar:"مستشفى",ic:"🏥",s:"Doctor works in hospital"},
+    {en:"School",ar:"مدرسة",ic:"🏫",s:"Teacher works in school"}
+  ],
+  "WB U5": [
+    {en:"Sofa",ar:"كنبة",ic:"🛋️",s:"Sofa is in the living room"},
+    {en:"Bed",ar:"سرير",ic:"🛏️",s:"Bed is in the bedroom"}
+  ],
+  "WB U6": [
+    {en:"Medicine",ar:"دواء",ic:"💊",s:"Take medicine when sick"},
+    {en:"Doctor",ar:"طبيب",ic:"👨‍⚕️",s:"See a doctor"}
+  ],
+  "WB U7": [
+    {en:"Forest",ar:"غابة",ic:"🌲",s:"Tiger lives in forest"},
+    {en:"Bamboo",ar:"خيزران",ic:"🎋",s:"Panda eats bamboo"}
+  ],
+  "WB U8": [
+    {en:"Storm",ar:"عاصفة",ic:"⛈️",s:"Storm is dangerous"},
+    {en:"Snow",ar:"ثلج",ic:"❄️",s:"Snow is cold"}
+  ]
+};
+
+const grammarData = {
+  "U1 Living Things": {
+    prompt: "رتب الكلمات لتكون جملة صحيحة (Present Passive):",
+    sentence: ["Insects", "are", "eaten", "by", "animals"]
+  },
+  "WB U1": {
+    prompt: "رتب الكلمات لتكوين جملة مكانية صحيحة (Where Clause):",
+    sentence: ["The", "desert", "is", "where", "camels", "live"]
+  }
+};
+
+const bgColors = ["#fffbeb", "#f0fdf4", "#eff6ff", "#fdf4ff", "#fff1f2", "#fefce8", "#f0fdfa"];
+
+let cur=null, cards=[], opened=[], matched=0, score=0, qIdx=0, currentWord=null;
+let flashIdx=0;
+let selectedWords = [], currentGrammarTarget = [];
+
+function initTabs() {
+  let sDiv = document.getElementById('studentTabs');
+  Object.keys(studentBooks).forEach(n => {
+    let b = document.createElement('button'); b.className = 'tab'; b.innerText = n;
+    b.onclick = () => loadUnit(n, studentBooks[n], b); sDiv.appendChild(b);
+  });
+
+  let wDiv = document.getElementById('workbookTabs');
+  Object.keys(workbookData).forEach(n => {
+    let b = document.createElement('button'); b.className = 'tab'; b.innerText = n;
+    b.onclick = () => loadUnit(n, workbookData[n], b); wDiv.appendChild(b);
+  });
+}
+
+function loadUnit(name, data, btn) {
+  document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+  btn.classList.add('active');
+  cur = data; matched = 0; opened = []; qIdx = 0; flashIdx = 0;
+  
+  // تغيير لون خلفية الصفحة عشوائياً أو حسب الوحدة لمنع الملل
+  let randomBg = bgColors[Math.floor(Math.random() * bgColors.length)];
+  document.body.style.background = randomBg;
+
+  document.getElementById('msg').innerText = name + ' - راجع الكلمات أولاً';
+  document.getElementById('qbox').style.display = 'none';
+  document.getElementById('gameArea').style.display = 'none';
+  
+  // تفعيل المراجعة السريعة أولاً
+  document.getElementById('flashcardArea').style.display = 'block';
+  updateFlashcard();
+
+  if(grammarData[name]) {
+    document.getElementById('grammarBox').style.display = 'block';
+    setupGrammar(grammarData[name]);
+  } else {
+    document.getElementById('grammarBox').style.display = 'none';
+  }
+}
+
+// دوال المراجعة السريعة Flashcards
+function updateFlashcard() {
+  let item = cur[flashIdx];
+  document.getElementById('fFront').innerHTML = item.ic + '<br><span style="font-size:22px">' + item.en + '</span>';
+  document.getElementById('fBack').innerHTML = '<span style="font-size:22px">' + item.ar + '</span><br><small style="font-size:12px">' + item.s + '</small>';
+  document.getElementById('fCard').classList.remove('flipped');
+  speak(item.en);
+}
+function flipCard() {
+  document.getElementById('fCard').classList.toggle('flipped');
+}
+function nextFlash() {
+  flashIdx = (flashIdx + 1) % cur.length;
+  updateFlashcard();
+}
+function prevFlash() {
+  flashIdx = (flashIdx - 1 + cur.length) % cur.length;
+  updateFlashcard();
+}
+function switchToGame() {
+  document.getElementById('flashcardArea').style.display = 'none';
+  document.getElementById('gameArea').style.display = 'block';
+  document.getElementById('msg').innerText = 'انتبه وطابق البطاقات المتشابهة!';
+  renderGrid();
+}
+function switchToFlash() {
+  document.getElementById('gameArea').style.display = 'none';
+  document.getElementById('flashcardArea').style.display = 'block';
+  updateFlashcard();
+}
+
+function renderGrid() {
+  let g = document.getElementById('grid'); g.innerHTML = '';
+  cards = [...cur, ...cur].sort(() => 0.5 - Math.random());
+  cards.forEach((c, i) => {
+    let d = document.createElement('div'); d.className = 'card'; d.innerHTML = '?';
+    d.onclick = () => openCard(d, i); g.appendChild(d);
+  });
+}
+
+function openCard(div, i) {
+  if (opened.length >= 2 || div.classList.contains('open')) return;
+  div.innerHTML = cards[i].ic + '<br><small>' + cards[i].en + '</small>';
+  div.classList.add('open');
+  speak(cards[i].en);
+  opened.push({div, i});
+  if (opened.length == 2) {
+    if (cards[opened[0].i].en === cards[opened[1].i].en) {
+      score += 2; matched++; upd();
+      document.getElementById('msg').innerText = '✅ ' + cards[i].en + ' = ' + cards[i].ar;
+      opened = [];
+      if (matched == cur.length) showQ();
+    } else {
+      setTimeout(() => {
+        opened.forEach(o => { o.div.innerHTML = '?'; o.div.classList.remove('open'); });
+        opened = [];
+      }, 600);
+    }
+  }
+}
+
+function setupGrammar(gObj) {
+  document.getElementById('grammarPrompt').innerText = gObj.prompt;
+  currentGrammarTarget = gObj.sentence;
+  selectedWords = [];
+  updateGrammarDisplay();
+  
+  let sourceDiv = document.getElementById('sourceWords');
+  sourceDiv.innerHTML = '';
+  let shuffled = [...currentGrammarTarget].sort(() => 0.5 - Math.random());
+  shuffled.forEach(w => {
+    let span = document.createElement('span');
+    span.className = 'word-chip';
+    span.innerText = w;
+    span.onclick = () => {
+      selectedWords.push(w);
+      span.style.display = 'none';
+      span.dataset.used = "true";
+      updateGrammarDisplay();
+    };
+    sourceDiv.appendChild(span);
+  });
+  document.getElementById('gramMsg').innerText = '';
+}
+
+function updateGrammarDisplay() {
+  let targetDiv = document.getElementById('targetSentence');
+  targetDiv.innerHTML = selectedWords.length === 0 ? '<span style="color:#9ca3af;font-size:11px">انقر على الكلمات بالترتيب هنا...</span>' : '';
+  selectedWords.forEach((w, idx) => {
+    let span = document.createElement('span');
+    span.className = 'word-chip';
+    span.innerText = w;
+    span.onclick = () => {
+      selectedWords.splice(idx, 1);
+      let chips = document.querySelectorAll('#sourceWords .word-chip');
+      chips.forEach(c => {
+        if(c.innerText === w && c.style.display === 'none' && c.dataset.used === "true") {
+          c.style.display = 'inline-block';
+          c.dataset.used = "false";
+          return;
+        }
+      });
+      updateGrammarDisplay();
+    };
+    targetDiv.appendChild(span);
+  });
+}
+
+function checkOrder() {
+  let userSentence = selectedWords.join(' ');
+  let correctSentence = currentGrammarTarget.join(' ');
+  let msg = document.getElementById('gramMsg');
+  if(userSentence === correctSentence) {
+    msg.style.color = '#16a34a';
+    msg.innerText = '🎉 إجابة صحيحة! أحسنت';
+    score += 3; upd();
+  } else {
+    msg.style.color = '#dc2626';
+    msg.innerText = '❌ حاول مرة أخرى بالترتيب الصحيح';
+  }
+}
+
+function loadGrammar() {
+  let activeTab = document.querySelector('.tab.active');
+  if(activeTab && grammarData[activeTab.innerText]) {
+    setupGrammar(grammarData[activeTab.innerText]);
+  }
+}
+
+function showQ() {
+  document.getElementById('qbox').style.display = 'block';
+  loadQ();
+}
+
+function loadQ() {
+  let it = cur[qIdx % cur.length]; currentWord = it;
+  document.getElementById('qen').innerText = it.en;
+  document.getElementById('qar').innerText = it.ar + ' | ' + it.s;
+  document.getElementById('qmsg').innerText = '';
+  document.getElementById('heard').innerText = '';
+  document.getElementById('opts').innerHTML = '';
+  
+  let ch = [it.ar, cur[(qIdx + 1) % cur.length].ar, cur[(qIdx + 2) % cur.length].ar].sort(() => 0.5 - Math.random());
+  ch.forEach(c => {
+    let b = document.createElement('button'); b.className = 'm'; b.innerText = c;
+    b.onclick = () => {
+      if(c == it.ar) {
+        score += 2; upd();
+        document.getElementById('qmsg').innerText = '✅ ممتاز! انطقها الآن 🎤';
+      } else {
+        document.getElementById('qmsg').innerText = '❌ خطأ';
+      }
+    };
+    document.getElementById('opts').appendChild(b);
+  });
+  speak(it.en);
+}
+
+function speak(t) {
+  let u = new SpeechSynthesisUtterance(t);
+  u.lang = 'en-US'; u.rate = 0.85;
+  speechSynthesis.speak(u);
+}
+
+function speakQ() { speak(currentWord.en); }
+
+function startListen() {
+  if(!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+    alert('متصفحك لا يدعم التعرف الصوتي، استخدم متصفح كروم');
+    return;
+  }
+  let SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  let rec = new SR(); rec.lang = 'en-US'; rec.interimResults = false;
+  let btn = document.getElementById('micBtn');
+  btn.classList.add('listen'); btn.innerText = '🎧 أسمعك...';
+  
+  rec.onresult = (e) => {
+    let said = e.results[0][0].transcript.toLowerCase().trim();
+    document.getElementById('heard').innerText = 'سمعت: ' + said;
+    let target = currentWord.en.toLowerCase();
+    if(said.includes(target) || target.includes(said)) {
+      document.getElementById('qmsg').innerText = '✅ صحيح! أحسنت 🎉';
+      score += 5; upd(); speak('Excellent');
+      setTimeout(() => {
+        qIdx++;
+        if(qIdx >= cur.length) {
+          document.getElementById('qbox').style.display = 'none';
+          document.getElementById('msg').innerText = '🎉 أتممت الوحدة بنجاح!';
+        } else {
+          loadQ();
+        }
+      }, 1000);
+    } else {
+      document.getElementById('qmsg').innerText = '❌ نطقك غير دقيق، قل: ' + currentWord.en;
+      speak(currentWord.en);
+    }
+    btn.classList.remove('listen'); btn.innerText = '🎤 انطق الكلمة';
+  };
+  rec.onerror = () => {
+    btn.classList.remove('listen'); btn.innerText = '🎤 انطق الكلمة';
+    document.getElementById('heard').innerText = 'لم يتم التقاط الصوت، حاول مجدداً';
+  };
+  rec.start();
+}
+
+function upd() {
+  document.getElementById('stars').innerText = '⭐ ' + score + ' نقطة';
+  document.getElementById('fill').style.width = Math.min(score, 200) / 2 + '%';
+}
+
+window.onload = initTabs;
+</script>
+</body>
+</html>
