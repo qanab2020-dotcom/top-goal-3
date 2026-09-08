@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Top Goal 3 - المنهج الرسمي الشامل</title>
+<title>Top Goal 3 - سادس ابتدائي - المنهج الرسمي 2025</title>
 <style>
 *{box-sizing:border-box}
 body{font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);margin:0;padding:10px;min-height:100vh;color:#fff}
@@ -13,36 +13,26 @@ header{text-align:center;background:#fff;color:#000;padding:14px;border-radius:1
 .tab.active{background:#ff4757;color:#fff;transform:scale(1.05)}
 .unit{display:none;background:#fff;color:#000;padding:14px;border-radius:16px;box-shadow:0 4px 15px rgba(0,0,0,.3)}
 .unit.active{display:block}
-
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-bottom:14px;}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin-bottom:14px;}
 .word-card{background:#f8f9ff;border:1.5px solid #dcdde1;border-radius:12px;padding:10px 6px;text-align:center;box-shadow:0 2px 5px rgba(0,0,0,.08);}
 .word-en{font-weight:bold;font-size:13px;color:#1e3799;margin-bottom:4px;}
 .word-ar-box{background:#fff;border:1.5px solid #ff6b81;border-radius:6px;padding:3px;margin-bottom:6px;font-size:11px;font-weight:bold;color:#e74c3c;min-height:22px;}
 .card-btns{display:flex;justify-content:center;gap:4px;}
 .btn-mini{border:none;border-radius:8px;padding:4px 7px;cursor:pointer;font-size:11px;color:#fff;box-shadow:0 2px 4px rgba(0,0,0,0.15);}
-.btn-mic{background:#ff4757;}
-.btn-mic.listening{background:#2ed573}
 .btn-audio{background:#3498db;}
-
+.btn-mic{background:#2ed573;}
+.btn-eye{background:#ffa502;}
 .rules-bottom-section{margin-top:14px;border:2px dashed #a29bfe;border-radius:12px;padding:12px;background:#f8f9ff;}
 .rules-title{font-size:13px;font-weight:bold;color:#2c3e50;margin-bottom:8px;text-align:right;}
-.rule-box-item{background:#fff8dc;border:1.5px solid #f39c12;border-radius:8px;padding:8px 10px;margin-bottom:8px;font-size:12px;font-weight:bold;color:#2c3e50;line-height:1.6;}
-.rule-ar-title{color:#d35400;margin-bottom:3px;font-size:13px;}
-.rule-ar-desc{color:#2c3e50;font-size:11px;font-weight:normal;}
-.rule-flex{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;}
-.speak-rule-btn{background:#3498db;color:#fff;border:none;border-radius:6px;padding:4px 8px;cursor:pointer;font-size:11px;white-space:nowrap;}
-
 .challenge-section{margin-top:14px;border:2px dashed #70a1ff;border-radius:12px;padding:12px;background:#f7f9fc;}
 .challenge-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
 .challenge-title{font-size:13px;font-weight:bold;color:#2f3542;}
-.challenge-counter{font-size:11px;background:#70a1ff;color:#fff;padding:2px 8px;border-radius:10px;font-weight:bold;}
 .drop-zone{min-height:45px;border:2px dashed #70a1ff;border-radius:8px;background:#fff;margin-bottom:8px;display:flex;align-items:center;padding:6px;gap:6px;flex-wrap:wrap;direction:ltr;}
 .word-chip{background:#f1f2f6;border:1.5px solid #ced6e0;padding:5px 10px;border-radius:6px;font-size:12px;cursor:pointer;font-weight:bold;color:#2f3542;user-select:none;}
 .word-chip:hover{background:#dfe4ea;}
 .feedback-msg{margin-top:8px;padding:8px;border-radius:8px;font-size:12px;font-weight:bold;text-align:center;display:none;}
-.btn-action{background:#2ed573;color:#fff;border:none;padding:5px 14px;border-radius:6px;font-size:11px;cursor:pointer;font-weight:bold;box-shadow:0 2px 4px rgba(0,0,0,0.1);}
+.btn-action{background:#2ed573;color:#fff;border:none;padding:5px 14px;border-radius:6px;font-size:11px;cursor:pointer;font-weight:bold;box-shadow:0 2px 4px rgba(0,0,0,0.1)}
 .btn-reset{background:#ff4757;color:#fff;border:none;padding:5px 10px;border-radius:6px;font-size:11px;cursor:pointer;font-weight:bold;}
-
 .conv-section{margin-top:14px;border:2px dashed #43cea2;border-radius:12px;padding:12px;background:#f0fff4;}
 .conv-title{font-size:13px;font-weight:bold;color:#2c3e50;margin-bottom:8px;}
 .bubble{padding:10px 12px;border-radius:14px;margin:8px 0;max-width:85%;position:relative;font-size:12px;line-height:1.5;}
@@ -50,20 +40,17 @@ header{text-align:center;background:#fff;color:#000;padding:14px;border-radius:1
 .bubble.b{background:#43cea2;color:#fff;align-self:flex-end;margin-left:auto;text-align:left;}
 .row{display:flex;flex-direction:column}
 .btn-conv{background:#5352ed;color:#fff;border:none;border-radius:8px;padding:4px 8px;cursor:pointer;font-size:11px;margin-top:4px;}
-
 .phonics-section{margin-top:14px;border:2px dashed #ff4757;border-radius:12px;padding:12px;background:#fff5f5;}
 .phonics-title{font-size:13px;font-weight:bold;color:#2c3e50;margin-bottom:8px;}
 .p-card{background:#fff;color:#000;padding:12px;border-radius:10px;margin:8px 0;border:1px solid #ff6b81;box-shadow:0 2px 5px rgba(0,0,0,0.05)}
 .sound{font-size:18px;background:#5352ed;color:#fff;padding:4px 10px;border-radius:8px;display:inline-block;direction:ltr}
 .en-sound{font-weight:bold;direction:ltr;display:inline-block;background:#dfe6e9;padding:4px 8px;border-radius:6px;margin:4px;font-size:12px;}
 .btn-phonics{background:#5352ed;color:#fff;border:none;border-radius:12px;padding:5px 10px;cursor:pointer;font-size:11px;}
-
 .reading-section{margin-top:14px;border:2px dashed #0984e3;border-radius:12px;padding:12px;background:#f0f8ff;}
 .reading-title{font-size:13px;font-weight:bold;color:#2c3e50;margin-bottom:8px;}
 .enTxt{direction:ltr;text-align:left;background:#f1f2f6;color:#2f3542;padding:10px;border-radius:10px;font-size:13px;line-height:1.6;margin-bottom:6px;}
 .arTxt{color:#636e72;margin-bottom:10px;font-size:12px;line-height:1.5;}
 .btn-reading{background:#0984e3;color:#fff;border:none;border-radius:14px;padding:5px 12px;cursor:pointer;font-size:11px;font-weight:bold;}
-
 .quiz-section{background:linear-gradient(135deg,#f857a6,#ff5858);color:#fff;margin-top:14px;border-radius:14px;padding:14px;box-shadow:0 4px 15px rgba(0,0,0,0.2)}
 .quiz-card{background:#fff;color:#000;padding:14px;border-radius:12px;margin:10px 0;}
 .quiz-q{font-weight:bold;margin:8px 0;font-size:13px;color:#2c3e50;}
@@ -71,669 +58,892 @@ header{text-align:center;background:#fff;color:#000;padding:14px;border-radius:1
 .opt.correct{background:#2ed573!important;color:#fff!important;border-color:#26af5f!important;}
 .opt.wrong{background:#ff4757!important;color:#fff!important;border-color:#d63031!important;}
 .quiz-feedback{margin-top:8px;padding:8px;border-radius:8px;font-size:12px;font-weight:bold;text-align:center;display:none;}
-.quiz-btn{padding:8px 14px;border:none;border-radius:14px;background:#5352ed;color:#fff;font-weight:bold;cursor:pointer;font-size:11px;margin-top:6px;}
-
-/* تصميم قسم المشاريع المضاف */
-.projects-container {background:linear-gradient(135deg,#ffecd2,#fcb69f); padding:10px; border-radius:12px;}
+.projects-container {background:linear-gradient(135deg,#ffecd2,#fcb69f); padding:14px; border-radius:12px;}
 .projects-subtabs {display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin:10px 0}
-.projects-tab {padding:7px 12px;background:#fff;color:#000;border:none;border-radius:18px;font-weight:bold;cursor:pointer}
+.projects-tab {padding:7px 12px;background:#fff;color:#000;border:none;border-radius:18px;font-weight:bold;cursor:pointer;font-size:11px;box-shadow:0 2px 5px rgba(0,0,0,0.1)}
 .projects-tab.active{background:#ff6b6b;color:#fff}
 .projects-unit {display:none;background:#fff;color:#000;padding:16px;border-radius:16px}
 .projects-unit.active{display:block}
-.projects-container input, .projects-container textarea{width:100%;padding:8px;margin:6px 0;border:1.5px solid #a29bfe;border-radius:10px;font-family:inherit}
-.projects-container label{font-weight:bold;color:#5f27cd}
-.projects-btn{padding:10px 16px;border:none;border-radius:18px;background:#5352ed;color:#fff;font-weight:bold;cursor:pointer;margin:5px}
+.projects-container input,.projects-container textarea{width:100%;padding:8px;margin:6px 0;border:1.5px solid #a29bfe;border-radius:10px;font-family:inherit}
+.projects-container label{font-weight:bold;color:#5f27cd;font-size:12px}
+.projects-btn{padding:8px 14px;border:none;border-radius:18px;background:#5352ed;color:#fff;font-weight:bold;cursor:pointer;margin:5px;font-size:11px}
 .projects-btn.print{background:#2ed573}
+.listening-indicator{color:#e74c3c;font-size:11px;font-weight:bold;margin-top:4px;display:none;}
 </style>
 </head>
 <body>
-
 <header>
-  <h1 style="margin:0;font-size:16px;color:#2c3e50">📚 Top Goal 3 - المنهج الرسمي الشامل</h1>
-  <p style="margin:4px 0 0;font-size:10px;color:#7f8c8d">الكلمات الأساسية + القواعد + 6 جمل لكل وحدة + المحادثات + النطق + القراءة + الاختبارات + المشاريع 🎯✨</p>
+  <h1 style="margin:0;font-size:16px;color:#2c3e50">📚 Top Goal 3 - سادس ابتدائي - المنهج الرسمي 2025</h1>
+  <p style="margin:4px 0 0;font-size:10px;color:#7f8c8d">الكلمات الأساسية + قواعد الوحدات + 6 جمل تدريبية متتالية لكل وحدة + الاختبارات الثلاثية + المشاريع 🎯</p>
 </header>
-
 <div class="stats-bar">
   <div>⭐ النقاط: <span id="stars-count">0</span></div>
   <div>🔥 الحماس: <span id="streak-count">0</span></div>
-  <div id="status-msg" style="color:#2c3e50;">جاهز للتعلم والتحدي</div>
+  <div id="status-msg" style="color:#2c3e50;">جاهز للتعلم</div>
 </div>
-
 <div class="tabs" id="tabs"></div>
 <div id="cont"></div>
-
 <script>
 let totalStars = 0;
 let totalStreak = 0;
 
 const allData = {
-"Welcome":[
-  {"en":"Agree","ar":"يوافق"},{"en":"At the moment","ar":"في هذه اللحظة"},{"en":"Cookie","ar":"بسكويت"},{"en":"Gate","ar":"بوابة"},
-  {"en":"Glass","ar":"زجاج"},{"en":"Go away!","ar":"اذهب بعيداً"},{"en":"Helmet","ar":"خوذة"},{"en":"If you want","ar":"إذا أردت"},
-  {"en":"In a minute","ar":"خلال دقيقة"},{"en":"Journalist","ar":"صحفي"},{"en":"Last name","ar":"اسم العائلة"},{"en":"No problem!","ar":"لا مشكلة"},
-  {"en":"Storyboard","ar":"لوحة القصة"},{"en":"Taxi","ar":"تاكسي"},{"en":"Tie","ar":"ربطة عنق"}
+"Welcome":[{"en":"Agree","ar":"يوافق"},{"en":"At the moment","ar":"في هذه اللحظة"},{"en":"Cookie","ar":"بسكويت"},{"en":"Gate","ar":"بوابة"},{"en":"Glass","ar":"زجاج"},{"en":"Go away!","ar":"اذهب بعيداً"},{"en":"Helmet","ar":"خوذة"},{"en":"If you want","ar":"إذا أردت"},{"en":"In a minute","ar":"خلال دقيقة"},{"en":"Journalist","ar":"صحفي"},{"en":"Last name","ar":"اسم العائلة"},{"en":"No problem!","ar":"لا مشكلة"},{"en":"Storyboard","ar":"لوحة القصة"},{"en":"Taxi","ar":"تاكسي"},{"en":"Tie","ar":"ربطة عنق"}],
+"U1 Living Things":[{"en":"Beetle","ar":"خنفساء"},{"en":"Butterfly","ar":"فراشة"},{"en":"Camel","ar":"جمل"},{"en":"Creature","ar":"مخلوق"},{"en":"Desert","ar":"صحراء"},{"en":"Dinosaur","ar":"ديناصور"},{"en":"Eagle","ar":"نسر"},{"en":"Extinct","ar":"منقرض"},{"en":"Fur","ar":"فرو"},{"en":"Furry","ar":"فروي"},{"en":"Heavy","ar":"ثقيل"},{"en":"Insect","ar":"حشرة"},{"en":"Journey","ar":"رحلة"},{"en":"Look after","ar":"يعتني بـ"},{"en":"Look like","ar":"يبدو مثل"},{"en":"Nest","ar":"عش"},{"en":"Octopus","ar":"أخطبوط"},{"en":"Pond","ar":"بركة ماء"},{"en":"Quiet","ar":"هادئ"},{"en":"Scratch","ar":"يخدش"},{"en":"Swan","ar":"بجعة"},{"en":"Tortoise","ar":"سلحفاة برية"},{"en":"Touch","ar":"يلمس"},{"en":"Wild","ar":"بري"},{"en":"Wing","ar":"جناح"}],
+"U2 Lifestyles":[{"en":"Bandage","ar":"ضمادة"},{"en":"Break","ar":"يكسر"},{"en":"Bread","ar":"خبز"},{"en":"Broken","ar":"مكسور"},{"en":"Burn","ar":"حرق"},{"en":"Cereal","ar":"حبوب غذائية"},{"en":"Cut","ar":"جرح"},{"en":"Delicious","ar":"لذيذ"},{"en":"Egg","ar":"بيضة"},{"en":"Elbow","ar":"مرفق"},{"en":"Fall over","ar":"يسقط"},{"en":"Finger","ar":"إصبع"},{"en":"Fork","ar":"شوكة"},{"en":"Hand","ar":"يد"},{"en":"Jam","ar":"مربى"},{"en":"Knee","ar":"ركبة"},{"en":"Knife","ar":"سكين"},{"en":"Medicine","ar":"دواء"},{"en":"Milk","ar":"حليب"},{"en":"Olive","ar":"زيتون"},{"en":"Pepper","ar":"فلفل"},{"en":"Pharmacy","ar":"صيدلية"},{"en":"Pizza","ar":"بيتزا"},{"en":"Restaurant","ar":"مطعم"},{"en":"Salt","ar":"ملح"},{"en":"Soap","ar":"صابون"},{"en":"Soup","ar":"شوربة/حساء"},{"en":"Sore","ar":"مؤلم/ملتهب"},{"en":"Spoon","ar":"ملعقة"},{"en":"Strawberry","ar":"فراولة"},{"en":"Toe","ar":"إصبع القدم"},{"en":"X-ray","ar":"أشعة إكس"}],
+"U3 Interests":[{"en":"Bored","ar":"ملول"},{"en":"Chess","ar":"شطرنج"},{"en":"Classical","ar":"كلاسيكي"},{"en":"Concert","ar":"حفل موسيقي"},{"en":"Drum","ar":"طبل"},{"en":"Experiment","ar":"تجربة علمية"},{"en":"Festival","ar":"مهرجان"},{"en":"Instrument","ar":"آلة موسيقية"},{"en":"Invitation","ar":"دعوة"},{"en":"Jazz","ar":"جاز"},{"en":"Join (a club)","ar":"ينضم إلى نادي"},{"en":"Magazine","ar":"مجلة"},{"en":"Member","ar":"عضو"},{"en":"Midday","ar":"منتصف النهار"},{"en":"Midnight","ar":"منتصف الليل"},{"en":"Online","ar":"متصل"},{"en":"Oud","ar":"عود"},{"en":"Poetry","ar":"شعر"},{"en":"Prize","ar":"جائزة"},{"en":"Program","ar":"برنامج"},{"en":"Puzzle","ar":"لغز"},{"en":"Pyramid","ar":"هرم"},{"en":"Stamp","ar":"طابع بريد"},{"en":"Traditional","ar":"تقليدي"},{"en":"Tune","ar":"لحن"},{"en":"Violin","ar":"كمان"}],
+"U4 Professions":[{"en":"AI specialist","ar":"أخصائي ذكاء اصطناعي"},{"en":"Ambulance","ar":"إسعاف"},{"en":"Artificial intelligence","ar":"ذكاء اصطناعي"},{"en":"Astronaut","ar":"رائد فضاء"},{"en":"Business","ar":"أعمال"},{"en":"Cybersecurity analyst","ar":"محلل أمن سيبراني"},{"en":"Design","ar":"تصميم"},{"en":"Earth","ar":"الأرض"},{"en":"Fire","ar":"نار"},{"en":"Fire station","ar":"محطة إطفاء"},{"en":"Fire truck","ar":"شاحنة إطفاء"},{"en":"Firefighter","ar":"رجل إطفاء"},{"en":"Missing","ar":"مفقود"},{"en":"Planet","ar":"كوكب"},{"en":"Police officer","ar":"ضابط شرطة"},{"en":"Police station","ar":"مركز شرطة"},{"en":"Robotics engineer","ar":"مهندس روبوتات"},{"en":"Rocket","ar":"صاروخ"},{"en":"Satellite","ar":"قمر صناعي"},{"en":"Space","ar":"فضاء"},{"en":"Video message","ar":"رسالة فيديو"}],
+"U5 World Sports":[{"en":"competition","ar":"منافسة"},{"en":"cycle","ar":"يقود دراجة"},{"en":"cycling","ar":"رياضة الدراجات"},{"en":"enter","ar":"يدخل"},{"en":"golf","ar":"جولف"},{"en":"hotel","ar":"فندق"},{"en":"ice skating","ar":"تزلج على الجليد"},{"en":"match","ar":"مباراة"},{"en":"quiz","ar":"اختبار قصير"},{"en":"race (n)","ar":"سباق"},{"en":"race (v)","ar":"يتسابق"},{"en":"sell","ar":"يبيع"},{"en":"skiing","ar":"تزلج"},{"en":"sled","ar":"زلاجة"},{"en":"snowboard","ar":"لوح تزلج"},{"en":"snowboarding","ar":"تزلج لوحي"},{"en":"slowly","ar":"ببطء"},{"en":"soon","ar":"قريباً"},{"en":"stadium","ar":"ملعب"},{"en":"team","ar":"فريق"},{"en":"ticket","ar":"تذكرة"},{"en":"tire","ar":"إطار"},{"en":"volleyball","ar":"كرة الطائرة"},{"en":"whistle","ar":"صفارة"},{"en":"winner","ar":"فائز"}],
+"U6 Environments":[{"en":"adventure","ar":"مغامرة"},{"en":"air","ar":"هواء"},{"en":"believe","ar":"يصدق"},{"en":"bridge","ar":"جسر"},{"en":"castle","ar":"قلعة"},{"en":"cave","ar":"كهف"},{"en":"dark","ar":"مظلم"},{"en":"deep","ar":"عميق"},{"en":"east","ar":"شرق"},{"en":"environment","ar":"بيئة"},{"en":"fog","ar":"ضباب"},{"en":"foggy","ar":"ضبابي"},{"en":"high","ar":"مرتفع"},{"en":"hill","ar":"تل"},{"en":"north","ar":"شمال"},{"en":"ocean","ar":"محيط"},{"en":"path","ar":"مسار"},{"en":"save","ar":"ينقذ"},{"en":"south","ar":"جنوب"},{"en":"stone","ar":"حجر"},{"en":"storm","ar":"عاصفة"},{"en":"stream","ar":"جدول ماء"},{"en":"tomorrow","ar":"غداً"},{"en":"turn left","ar":"يساراً"},{"en":"turn right","ar":"يميناً"},{"en":"west","ar":"غرب"}],
+"U7 Styles":[{"en":"baggy","ar":"واسع"},{"en":"bracelet","ar":"سوار"},{"en":"cheap","ar":"رخيص"},{"en":"expensive","ar":"غالي"},{"en":"fall","ar":"خريف"},{"en":"fit","ar":"يُناسب"},{"en":"flip-flops","ar":"شبشب"},{"en":"gloves","ar":"قفازات"},{"en":"handkerchief","ar":"منديل"},{"en":"oversized","ar":"كبير جداً"},{"en":"pajamas","ar":"بيجاما"},{"en":"pocket","ar":"جيب"},{"en":"size","ar":"مقاس"},{"en":"slim","ar":"نحيف"},{"en":"sneakers","ar":"حذاء رياضي"},{"en":"spots","ar":"نقاط"},{"en":"spring","ar":"ربيع"},{"en":"stripes","ar":"خطوط"},{"en":"summer","ar":"صيف"},{"en":"sunglasses","ar":"نظارات شمسية"},{"en":"tank top","ar":"قميص بدون أكمام"},{"en":"tracksuit","ar":"بدلة رياضية"},{"en":"warm","ar":"دافئ"},{"en":"winter","ar":"شتاء"}],
+"U8 Recent Events":[{"en":"advertisement","ar":"إعلان"},{"en":"application","ar":"طلب تقديم"},{"en":"apply","ar":"يتقدم"},{"en":"art","ar":"فن"},{"en":"assistant","ar":"مساعد"},{"en":"athletics","ar":"ألعاب القوى"},{"en":"borrow","ar":"يستعير"},{"en":"champion","ar":"بطل"},{"en":"classmate","ar":"زميل دراسة"},{"en":"consider","ar":"يعتبر"},{"en":"decide","ar":"يقرر"},{"en":"decisions","ar":"قرارات"},{"en":"exams","ar":"امتحانات"},{"en":"follow","ar":"يتابع"},{"en":"group","ar":"مجموعة"},{"en":"gymnastics","ar":"جمباز"},{"en":"history","ar":"تاريخ"},{"en":"improve","ar":"يتحسن"},{"en":"instead","ar":"بدلاً من ذلك"},{"en":"interested","ar":"مهتم"},{"en":"interesting","ar":"ممتع"},{"en":"invent","ar":"يخترع"},{"en":"keep","ar":"يحتفظ"},{"en":"language","ar":"لغة"},{"en":"presentation","ar":"عرض تقديمي"},{"en":"pressured","ar":"تحت الضغط"},{"en":"scholarship","ar":"منحة دراسية"},{"en":"science","ar":"علوم"},{"en":"semester","ar":"فصل دراسي"},{"en":"several","ar":"عدة"},{"en":"sign up","ar":"يسجل"},{"en":"teenager","ar":"مراهق"}],
+"Goodbye":[{"en":"adventure","ar":"مغامرة"},{"en":"ambulance","ar":"إسعاف"},{"en":"castle","ar":"قلعة"},{"en":"concert","ar":"حفل موسيقي"},{"en":"embarrassed","ar":"محرج"},{"en":"explode","ar":"ينفجر"},{"en":"festival","ar":"مهرجان"},{"en":"fire truck","ar":"شاحنة إطفاء"},{"en":"foggy","ar":"ضبابي"},{"en":"hill","ar":"تل"},{"en":"magazine","ar":"مجلة"},{"en":"microphone","ar":"ميكروفون"},{"en":"north","ar":"شمال"},{"en":"puzzle","ar":"لغز"},{"en":"race","ar":"سباق"},{"en":"snacks","ar":"وجبات خفيفة"},{"en":"snowboard","ar":"لوح تزلج"},{"en":"snowboarding","ar":"تزلج لوحي"},{"en":"snowy","ar":"مثلج"},{"en":"storm","ar":"عاصفة"},{"en":"stormy","ar":"عاصف"},{"en":"sunglasses","ar":"نظارات شمسية"},{"en":"warm","ar":"دافئ"}]
+};
+
+// القواعد الشاملة والمحدثة لكل وحدة
+const rulesData = {
+"Welcome": [
+{
+  title: "Revision: Simple Present vs Present Progressive (المضارع البسيط والمستمر)",
+  desc: `<div style="background:#fff;padding:10px;border-radius:8px;color:#2c3e50;direction:rtl;text-align:right;">
+    <div style="margin-bottom:8px;font-size:14px;">
+      <strong>ما هو المضارع البسيط؟</strong> يعبر عن الحقائق والعادات والروتين اليومي.<br>
+      <strong>ما هو المضارع المستمر؟</strong> يعبر عن حدث يحدث الآن في هذه اللحظة.
+    </div>
+    <hr style="border:0;border-top:1px solid #eee;margin:8px 0;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
+      <span style="direction:ltr;text-align:left;font-family:monospace;">• I am talking on the phone at the moment.</span>
+      <button onclick="speak('I am talking on the phone at the moment')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
+      <span style="direction:ltr;text-align:left;font-family:monospace;">• He is reading a book.</span>
+      <button onclick="speak('He is reading a book')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
+    </div>
+    <div style="color:#7f8c8d;font-size:12px;margin-top:4px;">At the moment = الآن | مراجعة الأزمنة البسيط والمستمر.</div>
+  </div>`
+}
 ],
-"U1 Living Things":[
-  {"en":"Beetle","ar":"خنفساء"},{"en":"Butterfly","ar":"فراشة"},{"en":"Camel","ar":"جمل"},{"en":"Creature","ar":"مخلوق"},
-  {"en":"Desert","ar":"صحراء"},{"en":"Dinosaur","ar":"ديناصور"},{"en":"Eagle","ar":"نسر"},{"en":"Extinct","ar":"منقرض"},
-  {"en":"Fur","ar":"فرو"},{"en":"Furry","ar":"فروي"},{"en":"Heavy","ar":"ثقيل"},{"en":"Insect","ar":"حشرة"},
-  {"en":"Journey","ar":"رحلة"},{"en":"Look after","ar":"يعتني بـ"},{"en":"Look like","ar":"يبدو مثل"},{"en":"Nest","ar":"عش"},
-  {"en":"Octopus","ar":"أخطبوط"},{"en":"Pond","ar":"بركة ماء"},{"en":"Quiet","ar":"هادئ"},{"en":"Scratch","ar":"يخدش"},
-  {"en":"Swan","ar":"بجعة"},{"en":"Tortoise","ar":"سلحفاة برية"},{"en":"Touch","ar":"يلمس"},{"en":"Wild","ar":"بري"},{"en":"Wing","ar":"جناح"}
+"U1 Living Things": [
+{
+  title: "Present Passive - المبني للمجهول في المضارع",
+  desc: `<div style="background:#fff;padding:10px;border-radius:8px;color:#2c3e50;direction:rtl;text-align:right;">
+    <div style="margin-bottom:8px;font-size:14px;">
+      <strong>ما هو؟</strong> نستخدمه عندما يكون الفعل (من قام بالحركة) غير مهم أو غير معروف، ونركز على المفعول به.<br>
+      <strong>التكوين:</strong> (am / is / are + التصريف الثالث للفعل V3).
+    </div>
+    <hr style="border:0;border-top:1px solid #eee;margin:8px 0;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
+      <span style="direction:ltr;text-align:left;font-family:monospace;">• Insects are eaten by birds.</span>
+      <button onclick="speak('Insects are eaten by birds')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
+      <span style="direction:ltr;text-align:left;font-family:monospace;">• The desert is covered with sand.</span>
+      <button onclick="speak('The desert is covered with sand')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
+    </div>
+    <div style="color:#7f8c8d;font-size:12px;margin-top:4px;">Formula: am/is/are + V3 | الحشرات تؤكل - الفاعل غير مهم</div>
+  </div>`
+},
+{
+  title: "Where clauses - جمل الوصل بـ Where",
+  desc: `<div style="background:#fff;padding:10px;border-radius:8px;color:#2c3e50;direction:rtl;text-align:right;">
+    <div style="margin-bottom:8px;font-size:14px;">
+      <strong>ما هي؟</strong> نستخدم كلمة Where بمعنى (المكان الذي) لربط الجمل وتوضيح أين يحدث الشيء.
+    </div>
+    <hr style="border:0;border-top:1px solid #eee;margin:8px 0;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
+      <span style="direction:ltr;text-align:left;font-family:monospace;">• The desert is where camels live.</span>
+      <button onclick="speak('The desert is where camels live')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
+      <span style="direction:ltr;text-align:left;font-family:monospace;">• A nest is where birds lay eggs.</span>
+      <button onclick="speak('A nest is where birds lay eggs')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
+    </div>
+  </div>`
+}
 ],
-"U2 Lifestyles":[
-  {"en":"Bandage","ar":"ضمادة"},{"en":"Break","ar":"يكسر"},{"en":"Bread","ar":"خبز"},{"en":"Broken","ar":"مكسور"},
-  {"en":"Burn","ar":"حرق"},{"en":"Cereal","ar":"حبوب غذائية"},{"en":"Cut","ar":"جرح"},{"en":"Delicious","ar":"لذيذ"},
-  {"en":"Egg","ar":"بيضة"},{"en":"Elbow","ar":"مرفق"},{"en":"Fall over","ar":"يسقط"},{"en":"Finger","ar":"إصبع"},
-  {"en":"Fork","ar":"شوكة"},{"en":"Hand","ar":"يد"},{"en":"Jam","ar":"مربى"},{"en":"Knee","ar":"ركبة"},
-  {"en":"Knife","ar":"سكين"},{"en":"Medicine","ar":"دواء"},{"en":"Milk","ar":"حليب"},{"en":"Olive","ar":"زيتون"},
-  {"en":"Pepper","ar":"فلفل"},{"en":"Pharmacy","ar":"صيدلية"},{"en":"Pizza","ar":"بيتزا"},{"en":"Restaurant","ar":"مطعم"},
-  {"en":"Salt","ar":"ملح"},{"en":"Soap","ar":"صابون"},{"en":"Soup","ar":"شوربة/حساء"},{"en":"Sore","ar":"مؤلم/ملتهب"},
-  {"en":"Spoon","ar":"ملعقة"},{"en":"Strawberry","ar":"فراولة"},{"en":"Toe","ar":"إصبع القدم"},{"en":"X-ray","ar":"أشعة إكس"}
+"U2 Lifestyles": [
+{
+  title: "Zero & First Conditional - الحالة الصفرية والأولى",
+  desc: `<div style="background:#fff;padding:10px;border-radius:8px;color:#2c3e50;direction:rtl;text-align:right;">
+    <div style="margin-bottom:8px;font-size:14px;">
+      <strong>الحالة الصفرية:</strong> تعبر عن حقائق ثابتة (If + مضارع، مضارع).<br>
+      <strong>الحالة الأولى:</strong> تعبر عن احتمال في المستقبل (If + مضارع، will + الفعل).
+    </div>
+    <hr style="border:0;border-top:1px solid #eee;margin:8px 0;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
+      <span style="direction:ltr;text-align:left;font-family:monospace;">• Zero: If you go to hospital, they give you X-ray.</span>
+      <button onclick="speak('If you go to hospital, they give you X ray')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
+      <span style="direction:ltr;text-align:left;font-family:monospace;">• First: If we rest, we will feel better.</span>
+      <button onclick="speak('If we rest, we will feel better')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
+    </div>
+    <div style="color:#7f8c8d;font-size:12px;margin-top:4px;">If + مضارع, مضارع / If + مضارع, will</div>
+  </div>`
+},
+{
+  title: "a few / a little - محددات الكمية",
+  desc: `<div style="background:#fff;padding:10px;border-radius:8px;color:#2c3e50;direction:rtl;text-align:right;">
+    <div style="margin-bottom:8px;font-size:14px;">
+      <strong>a few:</strong> تستخدم مع الأسماء المعدودة (التي تُجمع).<br>
+      <strong>a little:</strong> تستخدم مع الأسماء غير المعدودة (التي لا تُجمع).
+    </div>
+    <hr style="border:0;border-top:1px solid #eee;margin:8px 0;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
+      <span style="direction:ltr;text-align:left;font-family:monospace;">• I need a few strawberries.</span>
+      <button onclick="speak('I need a few strawberries')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
+      <span style="direction:ltr;text-align:left;font-family:monospace;">• Put a little salt in soup.</span>
+      <button onclick="speak('Put a little salt in soup')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
+    </div>
+    <div style="color:#7f8c8d;font-size:12px;margin-top:4px;">a few (معدود) / a little (غير معدود)</div>
+  </div>`
+}
 ],
-"U3 Interests":[
-  {"en":"Bored","ar":"ملول"},{"en":"Chess","ar":"شطرنج"},{"en":"Classical","ar":"كلاسيكي"},{"en":"Concert","ar":"حفل موسيقي"},
-  {"en":"Drum","ar":"طبل"},{"en":"Experiment","ar":"تجربة علمية"},{"en":"Festival","ar":"مهرجان"},{"en":"Instrument","ar":"آلة موسيقية"},
-  {"en":"Invitation","ar":"دعوة"},{"en":"Jazz","ar":"جاز"},{"en":"Join (a club)","ar":"ينضم إلى نادي"},{"en":"Magazine","ar":"مجلة"},
-  {"en":"Member","ar":"عضو"},{"en":"Midday","ar":"منتصف النهار"},{"en":"Midnight","ar":"منتصف الليل"},{"en":"Online","ar":"متصل"},
-  {"en":"Oud","ar":"عود"},{"en":"Poetry","ar":"شعر"},{"en":"Prize","ar":"جائزة"},{"en":"Program","ar":"برنامج"},
-  {"en":"Puzzle","ar":"لغز"},{"en":"Pyramid","ar":"هرم"},{"en":"Stamp","ar":"طابع بريد"},{"en":"Traditional","ar":"تقليدي"},
-  {"en":"Tune","ar":"لحن"},{"en":"Violin","ar":"كمان"}
+"U3 Interests": [
+{
+  title: "Present Perfect since/for - المضارع التام",
+  desc: `<div style="background:#fff;padding:10px;border-radius:8px;color:#2c3e50;direction:rtl;text-align:right;">
+    <div style="margin-bottom:8px;font-size:14px;">
+      <strong>ما هو؟</strong> يعبر عن حدث بدأ في الماضي وما زال مستمراً حتى الآن.<br>
+      <strong>for:</strong> تأتي مع مدة زمنية محددة. | <strong>since:</strong> تأتي مع نقطة بداية الحدث.
+    </div>
+    <hr style="border:0;border-top:1px solid #eee;margin:8px 0;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
+      <span style="direction:ltr;text-align:left;font-family:monospace;">• I've taken lessons for 6 years.</span>
+      <button onclick="speak('I have taken lessons for 6 years')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
+      <span style="direction:ltr;text-align:left;font-family:monospace;">• She has played since she was baby.</span>
+      <button onclick="speak('She has played since she was baby')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
+    </div>
+    <div style="color:#7f8c8d;font-size:12px;margin-top:4px;">for = مدة / since = بداية</div>
+  </div>`
+},
+{
+  title: "just - للتعبير عن حدث وقع للتو",
+  desc: `<div style="background:#fff;padding:10px;border-radius:8px;color:#2c3e50;direction:rtl;text-align:right;">
+    <div style="margin-bottom:8px;font-size:14px;">
+      <strong>ما هي؟</strong> نستخدم (just) للإشارة إلى أن الفعل قد انتهى للتو منذ لحظات قليلة.
+    </div>
+    <hr style="border:0;border-top:1px solid #eee;margin:8px 0;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
+      <span style="direction:ltr;text-align:left;font-family:monospace;">• I just returned from trip.</span>
+      <button onclick="speak('I just returned from trip')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
+      <span style="direction:ltr;text-align:left;font-family:monospace;">• She has just arrived home.</span>
+      <button onclick="speak('She has just arrived home')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
+    </div>
+  </div>`
+}
 ],
-"U4 Professions":[
-  {"en":"AI specialist","ar":"أخصائي ذكاء اصطناعي"},{"en":"Ambulance","ar":"إسعاف"},{"en":"Artificial intelligence","ar":"ذكاء اصطناعي"},{"en":"Astronaut","ar":"رائد فضاء"},
-  {"en":"Business","ar":"أعمال"},{"en":"Cybersecurity analyst","ar":"محلل أمن سيبراني"},{"en":"Design","ar":"تصميم"},{"en":"Earth","ar":"الأرض"},
-  {"en":"Fire","ar":"نار"},{"en":"Fire station","ar":"محطة إطفاء"},{"en":"Fire truck","ar":"شاحنة إطفاء"},{"en":"Firefighter","ar":"رجل إطفاء"},
-  {"en":"Missing","ar":"مفقود"},{"en":"Planet","ar":"كوكب"},{"en":"Police officer","ar":"ضابط شرطة"},{"en":"Police station","ar":"مركز شرطة"},
-  {"en":"Robotics engineer","ar":"مهندس روبوتات"},{"en":"Rocket","ar":"صاروخ"},{"en":"Satellite","ar":"قمر صناعي"},{"en":"Space","ar":"فضاء"},
-  {"en":"Video message","ar":"رسالة فيديو"}
+"U4 Professions": [
+{
+  title: "Past Progressive + Simple Past - الماضي المستمر والبسيط",
+  desc: `<div style="background:#fff;padding:10px;border-radius:8px;color:#2c3e50;direction:rtl;text-align:right;">
+    <div style="margin-bottom:8px;font-size:14px;">
+      <strong>ما هو؟</strong> يعبر عن حدث طويل كان مستمراً في الماضي وقاطعه حدث قصير.
+    </div>
+    <hr style="border:0;border-top:1px solid #eee;margin:8px 0;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
+      <span style="direction:ltr;text-align:left;font-family:monospace;">• They were traveling when we recorded a video.</span>
+      <button onclick="speak('They were traveling when we recorded a video')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
+      <span style="direction:ltr;text-align:left;font-family:monospace;">• I was reading when he called.</span>
+      <button onclick="speak('I was reading when he called')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
+    </div>
+    <div style="color:#7f8c8d;font-size:12px;margin-top:4px;">was/were + V-ing + when + Past Simple</div>
+  </div>`
+},
+{
+  title: "Relative Clauses who/which/that - ضمائر الوصل",
+  desc: `<div style="background:#fff;padding:10px;border-radius:8px;color:#2c3e50;direction:rtl;text-align:right;">
+    <div style="margin-bottom:8px;font-size:14px;">
+      <strong>who:</strong> تستخدم للعاقل. | <strong>which/that:</strong> تستخدم لغير العاقل.
+    </div>
+    <hr style="border:0;border-top:1px solid #eee;margin:8px 0;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
+      <span style="direction:ltr;text-align:left;font-family:monospace;">• The firefighter who climbed tree didn't find rabbit.</span>
+      <button onclick="speak('The firefighter who climbed tree did not find rabbit')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
+      <span style="direction:ltr;text-align:left;font-family:monospace;">• The truck which was parked didn't move.</span>
+      <button onclick="speak('The truck which was parked did not move')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
+    </div>
+  </div>`
+}
 ],
-"U5 World Sports":[
-  {"en":"competition","ar":"منافسة"},{"en":"cycle","ar":"يقود دراجة"},{"en":"cycling","ar":"رياضة الدراجات"},{"en":"enter","ar":"يدخل"},
-  {"en":"golf","ar":"جولف"},{"en":"hotel","ar":"فندق"},{"en":"ice skating","ar":"تزلج على الجليد"},{"en":"match","ar":"مباراة"},
-  {"en":"quiz","ar":"اختبار قصير"},{"en":"race (n)","ar":"سباق"},{"en":"race (v)","ar":"يتسابق"},{"en":"sell","ar":"يبيع"},
-  {"en":"skiing","ar":"تزلج"},{"en":"sled","ar":"زلاجة"},{"en":"snowboard","ar":"لوح تزلج"},{"en":"snowboarding","ar":"تزلج لوحي"},
-  {"en":"slowly","ar":"ببطء"},{"en":"soon","ar":"قريباً"},{"en":"stadium","ar":"ملعب"},{"en":"team","ar":"فريق"},
-  {"en":"ticket","ar":"تذكرة"},{"en":"tire","ar":"إطار"},{"en":"volleyball","ar":"كرة الطائرة"},{"en":"whistle","ar":"صفارة"},{"en":"winner","ar":"فائز"}
+"U5 World Sports": [
+{
+  title: "Comparatives & Superlatives - المقارنة والتفضيل",
+  desc: `<div style="background:#fff;padding:10px;border-radius:8px;color:#2c3e50;direction:rtl;text-align:right;">
+    <div style="margin-bottom:8px;font-size:14px;">
+      <strong>المقارنة:</strong> نقارن بين اثنين (er + than). | <strong>التفضيل:</strong> الأفضل بين مجموعة (the + est).
+    </div>
+    <hr style="border:0;border-top:1px solid #eee;margin:8px 0;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
+      <span style="direction:ltr;text-align:left;font-family:monospace;">• Cheetahs are faster than lions.</span>
+      <button onclick="speak('Cheetahs are faster than lions')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
+      <span style="direction:ltr;text-align:left;font-family:monospace;">• It is the fastest animal.</span>
+      <button onclick="speak('It is the fastest animal')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
+    </div>
+  </div>`
+},
+{
+  title: "(not) as... as - صيغة المساواة",
+  desc: `<div style="background:#fff;padding:10px;border-radius:8px;color:#2c3e50;direction:rtl;text-align:right;">
+    <div style="margin-bottom:8px;font-size:14px;">
+      تستخدم لوصف التساوي أو عدم التساوي بين شيئين باستخدام الصفة بين الكلمتين.
+    </div>
+    <hr style="border:0;border-top:1px solid #eee;margin:8px 0;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
+      <span style="direction:ltr;text-align:left;font-family:monospace;">• Volleyball is not as fast as basketball.</span>
+      <button onclick="speak('Volleyball is not as fast as basketball')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
+      <span style="direction:ltr;text-align:left;font-family:monospace;">• You are as tall as me.</span>
+      <button onclick="speak('You are as tall as me')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
+    </div>
+  </div>`
+}
 ],
-"U6 Environments":[
-  {"en":"adventure","ar":"مغامرة"},{"en":"air","ar":"هواء"},{"en":"believe","ar":"يصدق"},{"en":"bridge","ar":"جسر"},
-  {"en":"castle","ar":"قلعة"},{"en":"cave","ar":"كهف"},{"en":"dark","ar":"مظلم"},{"en":"deep","ar":"عميق"},
-  {"en":"east","ar":"شرق"},{"en":"environment","ar":"بيئة"},{"en":"fog","ar":"ضباب"},{"en":"foggy","ar":"ضبابي"},
-  {"en":"high","ar":"مرتفع"},{"en":"hill","ar":"تل"},{"en":"north","ar":"شمال"},{"en":"ocean","ar":"محيط"},
-  {"en":"path","ar":"مسار"},{"en":"save","ar":"ينقذ"},{"en":"south","ar":"جنوب"},{"en":"stone","ar":"حجر"},
-  {"en":"storm","ar":"عاصفة"},{"en":"stream","ar":"جدول ماء"},{"en":"tomorrow","ar":"غداً"},{"en":"turn left","ar":"يساراً"},
-  {"en":"turn right","ar":"يميناً"},{"en":"west","ar":"غرب"}
+"U6 Environments": [
+{
+  title: "Future Forms Review - مراجعة صيغ المستقبل",
+  desc: `<div style="background:#fff;padding:10px;border-radius:8px;color:#2c3e50;direction:rtl;text-align:right;">
+    <div style="margin-bottom:8px;font-size:14px;">
+      طرق التعبير عن المستقبل والخطط والجداول الزمنية.
+    </div>
+    <hr style="border:0;border-top:1px solid #eee;margin:8px 0;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
+      <span style="direction:ltr;text-align:left;font-family:monospace;">• The castle opens at 9 a.m.</span>
+      <button onclick="speak('The castle opens at 9 a m')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
+      <span style="direction:ltr;text-align:left;font-family:monospace;">• It's going to be foggy.</span>
+      <button onclick="speak('It is going to be foggy')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
+    </div>
+  </div>`
+},
+{
+  title: "may/might/could للاحتمال",
+  desc: `<div style="background:#fff;padding:10px;border-radius:8px;color:#2c3e50;direction:rtl;text-align:right;">
+    <div style="margin-bottom:8px;font-size:14px;">
+      تستخدم للتعبير عن احتمالية حدوث الشيء بنسبة غير مؤكدة.
+    </div>
+    <hr style="border:0;border-top:1px solid #eee;margin:8px 0;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
+      <span style="direction:ltr;text-align:left;font-family:monospace;">• It may be sunny tomorrow.</span>
+      <button onclick="speak('It may be sunny tomorrow')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
+      <span style="direction:ltr;text-align:left;font-family:monospace;">• We might see a bridge.</span>
+      <button onclick="speak('We might see a bridge')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
+    </div>
+  </div>`
+}
 ],
-"U7 Styles":[
-  {"en":"baggy","ar":"واسع"},{"en":"bracelet","ar":"سوار"},{"en":"cheap","ar":"رخيص"},{"en":"expensive","ar":"غالي"},
-  {"en":"fall","ar":"خريف"},{"en":"fit","ar":"يُناسب"},{"en":"flip-flops","ar":"شبشب"},{"en":"gloves","ar":"قفازات"},
-  {"en":"handkerchief","ar":"منديل"},{"en":"oversized","ar":"كبير جداً"},{"en":"pajamas","ar":"بيجاما"},{"en":"pocket","ar":"جيب"},
-  {"en":"size","ar":"مقاس"},{"en":"slim","ar":"نحيف"},{"en":"sneakers","ar":"حذاء رياضي"},{"en":"spots","ar":"نقاط"},
-  {"en":"spring","ar":"ربيع"},{"en":"stripes","ar":"خطوط"},{"en":"summer","ar":"صيف"},{"en":"sunglasses","ar":"نظارات شمسية"},
-  {"en":"tank top","ar":"قميص بدون أكمام"},{"en":"tracksuit","ar":"بدلة رياضية"},{"en":"warm","ar":"دافئ"},{"en":"winter","ar":"شتاء"}
+"U7 Styles": [
+{
+  title: "Reported Speech say/tell - الكلام المنقول",
+  desc: `<div style="background:#fff;padding:10px;border-radius:8px;color:#2c3e50;direction:rtl;text-align:right;">
+    <div style="margin-bottom:8px;font-size:14px;">
+      نقل كلام شخص لشخص آخر مع تغيير الزمن والفعل.
+    </div>
+    <hr style="border:0;border-top:1px solid #eee;margin:8px 0;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
+      <span style="direction:ltr;text-align:left;font-family:monospace;">• He said he was looking for flip-flops.</span>
+      <button onclick="speak('He said he was looking for flip flops')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
+      <span style="direction:ltr;text-align:left;font-family:monospace;">• He told me he needed a bigger size.</span>
+      <button onclick="speak('He told me he needed a bigger size')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
+    </div>
+  </div>`
+},
+{
+  title: "Reporting Questions - نقل الأسئلة",
+  desc: `<div style="background:#fff;padding:10px;border-radius:8px;color:#2c3e50;direction:rtl;text-align:right;">
+    <div style="margin-bottom:8px;font-size:14px;">
+      طريقة تحويل السؤال المباشر إلى كلام غير مباشر باستخدام أدوات الاستفهام أو if.
+    </div>
+    <hr style="border:0;border-top:1px solid #eee;margin:8px 0;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
+      <span style="direction:ltr;text-align:left;font-family:monospace;">• He asked where I bought the bracelet.</span>
+      <button onclick="speak('He asked where I bought the bracelet')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
+      <span style="direction:ltr;text-align:left;font-family:monospace;">• She asked if I liked oversized.</span>
+      <button onclick="speak('She asked if I liked oversized')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
+    </div>
+  </div>`
+}
 ],
-"U8 Recent Events":[
-  {"en":"advertisement","ar":"إعلان"},{"en":"application","ar":"طلب تقديم"},{"en":"apply","ar":"يتقدم"},{"en":"art","ar":"فن"},
-  {"en":"assistant","ar":"مساعد"},{"en":"athletics","ar":"ألعاب القوى"},{"en":"borrow","ar":"يستعير"},{"en":"champion","ar":"بطل"},
-  {"en":"classmate","ar":"زميل دراسة"},{"en":"consider","ar":"يعتبر"},{"en":"decide","ar":"يقرر"},{"en":"decisions","ar":"قرارات"},
-  {"en":"exams","ar":"امتحانات"},{"en":"follow","ar":"يتابع"},{"en":"grades","ar":"درجات"},{"en":"graduate","ar":"يتخرج"},
-  {"en":"group","ar":"مجموعة"},{"en":"gymnastics","ar":"جمباز"},{"en":"history","ar":"تاريخ"},{"en":"improve","ar":"يتحسن"},
-  {"en":"instead","ar":"بدلاً من ذلك"},{"en":"interested","ar":"مهتم"},{"en":"interesting","ar":"ممتع"},{"en":"invent","ar":"يخترع"},
-  {"en":"keep","ar":"يحتفظ"},{"en":"language","ar":"لغة"},{"en":"presentation","ar":"عرض تقديمي"},{"en":"pressured","ar":"تحت الضغط"},
-  {"en":"scholarship","ar":"منحة دراسية"},{"en":"science","ar":"علوم"},{"en":"semester","ar":"فصل دراسي"},{"en":"several","ar":"عدة"},
-  {"en":"sign up","ar":"يسجل"},{"en":"teenager","ar":"مراهق"}
+"U8 Recent Events": [
+{
+  title: "Present Perfect already/ever/just/never/yet",
+  desc: `<div style="background:#fff;padding:10px;border-radius:8px;color:#2c3e50;direction:rtl;text-align:right;">
+    <div style="margin-bottom:8px;font-size:14px;">
+      استخدام الكلمات الدالة مع زمن المضارع التام لتوضيح توقيت الحدث.
+    </div>
+    <hr style="border:0;border-top:1px solid #eee;margin:8px 0;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
+      <span style="direction:ltr;text-align:left;font-family:monospace;">• I've already finished my exams.</span>
+      <button onclick="speak('I have already finished my exams')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
+      <span style="direction:ltr;text-align:left;font-family:monospace;">• Have you ever joined a club?</span>
+      <button onclick="speak('Have you ever joined a club')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
+    </div>
+  </div>`
+},
+{
+  title: "Modal verbs can/could/must/have to/should",
+  desc: `<div style="background:#fff;padding:10px;border-radius:8px;color:#2c3e50;direction:rtl;text-align:right;">
+    <div style="margin-bottom:8px;font-size:14px;">
+      الأفعال الناقصة للتعبير عن الإلزام، الاستطاعة، وتقديم النصيحة.
+    </div>
+    <hr style="border:0;border-top:1px solid #eee;margin:8px 0;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
+      <span style="direction:ltr;text-align:left;font-family:monospace;">• You must study hard.</span>
+      <button onclick="speak('You must study hard')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
+      <span style="direction:ltr;text-align:left;font-family:monospace;">• You should consider a scholarship.</span>
+      <button onclick="speak('You should consider a scholarship')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
+    </div>
+  </div>`
+}
 ],
-"Goodbye":[
-  {"en":"adventure","ar":"مغامرة"},{"en":"ambulance","ar":"إسعاف"},{"en":"castle","ar":"قلعة"},{"en":"concert","ar":"حفل موسيقي"},
-  {"en":"embarrassed","ar":"محرج"},{"en":"explode","ar":"ينفجر"},{"en":"festival","ar":"مهرجان"},{"en":"fire truck","ar":"شاحنة إطفاء"},
-  {"en":"foggy","ar":"ضبابي"},{"en":"hill","ar":"تل"},{"en":"magazine","ar":"مجلة"},{"en":"microphone","ar":"ميكروفون"},
-  {"en":"north","ar":"شمال"},{"en":"puzzle","ar":"لغز"},{"en":"race","ar":"سباق"},{"en":"snacks","ar":"وجبات خفيفة"},
-  {"en":"snowboard","ar":"لوح تزلج"},{"en":"snowboarding","ar":"تزلج لوحي"},{"en":"snowy","ar":"مثلج"},{"en":"storm","ar":"عاصفة"},
-  {"en":"stormy","ar":"عاصف"},{"en":"sunglasses","ar":"نظارات شمسية"},{"en":"warm","ar":"دافئ"}
+"Goodbye": [
+{
+  title: "Revision شامل",
+  desc: `<div style="background:#fff;padding:10px;border-radius:8px;color:#2c3e50;direction:rtl;text-align:right;">
+    <div style="margin-bottom:8px;font-size:14px;">
+      مراجعة شاملة لجميع القواعد والأزمنة استعداداً للاختبار النهائي.
+    </div>
+    <hr style="border:0;border-top:1px solid #eee;margin:8px 0;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
+      <span style="direction:ltr;text-align:left;font-family:monospace;">• We finished Top Goal successfully.</span>
+      <button onclick="speak('We finished Top Goal successfully')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
+      <span style="direction:ltr;text-align:left;font-family:monospace;">• Good luck in-class or in your final exams.</span>
+      <button onclick="speak('Good luck in your final exams')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
+    </div>
+  </div>`
+}
 ]
 };
-
-const rulesData = {
+// 6 جمل تدريبية متتالية لكل وحدة
+const unitSentencesMap = {
   "Welcome": [
-    {
-      title: "Revision: Simple Present vs Present Progressive vs Past (مراجعة الأزمنة)",
-      desc: "• I am talking on the phone at the moment.<br><span style='color:#57606f;'>أنا أحدث الهاتف في هذه اللحظة. (مضارع مستمر)</span><br><br>• She usually wakes up early in the morning.<br><span style='color:#57606f;'>هي عادة تستيقظ مبكراً في الصباح. (مضارع بسيط)</span><br><br>💡 At the moment = الآن"
-    }
+    ["I", "am", "talking", "on", "the", "phone"],
+    ["He", "is", "reading", "a", "new", "book"],
+    ["They", "play", "football", "every", "single", "day"],
+    ["She", "does", "not", "like", "cold", "milk"],
+    ["We", "are", "learning", "english", "grammar", "now"],
+    ["Do", "you", "speak", "english", "with", "me"]
   ],
   "U1 Living Things": [
-    {
-      title: "Present Passive (المبني للمجهول في المضارع)",
-      desc: "• Insects are eaten by birds.<br><span style='color:#57606f;'>الحشرات تؤكل من قبل الطيور.</span><br><br>• The desert is covered with sand.<br><span style='color:#57606f;'>الصحراء مغطاة بالرمال.</span><br><br>📝 القاعدة: (am / is / are + V3)"
-    },
-    {
-      title: "Where Clauses (جمل الوصل بـ Where)",
-      desc: "• The desert is where camels live.<br><span style='color:#57606f;'>الصحراء هي المكان الذي تعيش فيه الجمال.</span><br><br>• A nest is where birds lay their eggs.<br><span style='color:#57606f;'>العش هو المكان الذي تضع فيه الطيور بيضها.</span>"
-    }
+    ["Insects", "are", "eaten", "by", "hungry", "birds"],
+    ["The", "desert", "is", "where", "camels", "live"],
+    ["A", "nest", "is", "where", "birds", "lay"],
+    ["Camels", "have", "thick", "fur", "for", "heat"],
+    ["Wild", "animals", "run", "fast", "in", "sand"],
+    ["Butterflies", "fly", "over", "the", "green", "plants"]
   ],
   "U2 Lifestyles": [
-    {
-      title: "Zero & First Conditional (الحالة الصفرية والأولى)",
-      desc: "• If you go to the hospital, they give you an X-ray.<br><span style='color:#57606f;'>إذا ذهبت للمستشفى، فإنهم يعطونك أشعة.</span><br><br>• If we rest well, we will feel better.<br><span style='color:#57606f;'>إذا استرحنا جيداً، فسوف نشعر بتحسن.</span>"
-    },
-    {
-      title: "Quantifiers: a few / a little (محددات الكمية)",
-      desc: "• I need a few strawberries for the salad.<br><span style='color:#57606f;'>أحتاج إلى القليل من الفراولة للسلطة. (معدود)</span><br><br>• Put a little salt and pepper in the soup.<br><span style='color:#57606f;'>ضع القليل من الملح والفلفل. (غير معدود)</span>"
-    }
+    ["If", "we", "rest", "we", "will", "feel"],
+    ["Put", "a", "little", "salt", "in", "soup"],
+    ["I", "need", "a", "few", "fresh", "strawberries"],
+    ["If", "you", "fall", "over", "you", "hurt"],
+    ["She", "bought", "some", "bread", "and", "jam"],
+    ["He", "went", "to", "pharmacy", "for", "medicine"]
   ],
   "U3 Interests": [
-    {
-      title: "Present Perfect with since / for (المضارع التام)",
-      desc: "• I have taken lessons for six years.<br><span style='color:#57606f;'>لقد أخذت دروساً لمدة ست سنوات.</span><br><br>• She has been interested since she was a baby.<br><span style='color:#57606f;'>هي مهتمة منذ أن كانت طفلة رضيعة.</span>"
-    },
-    {
-      title: "Present Perfect with just (الأحداث الأخيرة)",
-      desc: "• I have just returned from a trip this morning.<br><span style='color:#57606f;'>لقد عُدت للتو من رحلة هذا الصباح.</span><br><br>• She has just finished her homework.<br><span style='color:#57606f;'>لقد انتهت للتو من واجبها.</span>"
-    }
+    ["I", "have", "taken", "lessons", "for", "years"],
+    ["She", "has", "played", "since", "she", "baby"],
+    ["I", "just", "returned", "from", "long", "trip"],
+    ["He", "is", "interested", "in", "playing", "chess"],
+    ["We", "joined", "music", "club", "last", "week"],
+    ["They", "listen", "to", "classical", "tune", "now"]
   ],
   "U4 Professions": [
-    {
-      title: "Past Progressive (الماضي المستمر)",
-      desc: "• We were traveling when the phone rang.<br><span style='color:#57606f;'>كنا نسافر عندما رن الهاتف.</span><br><br>• He was reading a book while she was sleeping.<br><span style='color:#57606f;'>كان يقرأ كتاباً بينما كانت هي نائمة.</span>"
-    }
+    ["They", "were", "traveling", "when", "we", "recorded"],
+    ["I", "was", "reading", "when", "he", "called"],
+    ["The", "firefighter", "who", "climbed", "tree", "saved"],
+    ["An", "astronaut", "flies", "rocket", "in", "space"],
+    ["Police", "officer", "helps", "people", "in", "town"],
+    ["Robotics", "engineer", "builds", "smart", "machines", "today"]
   ],
   "U5 World Sports": [
-    {
-      title: "Comparatives & Superlatives (المقارنة والتفضيل)",
-      desc: "• Cheetahs are faster than lions.<br><span style='color:#57606f;'>الفهود أسرع من الأسود.</span><br><br>• It is the fastest animal in the world.<br><span style='color:#57606f;'>إنه أسرع حيوان في العالم.</span>"
-    }
+    ["Cheetahs", "are", "faster", "than", "fast", "lions"],
+    ["It", "is", "the", "fastest", "animal", "ever"],
+    ["Volleyball", "is", "not", "as", "fast", "basketball"],
+    ["You", "are", "as", "tall", "as", "me"],
+    ["The", "team", "won", "stadium", "gold", "cup"],
+    ["He", "rides", "bike", "in", "cycling", "race"]
   ],
   "U6 Environments": [
-    {
-      title: "Predictions & Future (التنبؤ والمستقبل)",
-      desc: "• It might rain tomorrow.<br><span style='color:#57606f;'>قد تمطر غداً.</span><br><br>• I am going to visit my uncle next week.<br><span style='color:#57606f;'>أنا أنوي زيارة عَمّي الأسبوع القادم.</span>"
-    }
+    ["The", "castle", "opens", "at", "nine", "am"],
+    ["It", "is", "going", "to", "be", "foggy"],
+    ["It", "may", "be", "sunny", "tomorrow", "morning"],
+    ["We", "might", "see", "old", "stone", "bridge"],
+    ["Walk", "along", "path", "through", "dark", "cave"],
+    ["Turn", "right", "near", "deep", "blue", "ocean"]
   ],
   "U7 Styles": [
-    {
-      title: "Reported Speech (الكلام المنقول)",
-      desc: "• Direct: \"I am buying flip-flops.\"<br><span style='color:#57606f;'>مباشر: \"أنا أشتري حذاءً خفيفاً.\"</span><br><br>• Reported: He said he was buying flip-flops.<br><span style='color:#57606f;'>منقول: قال إنه كان يشتري حذاءً خفيفاً.</span>"
-    }
+    ["He", "said", "he", "was", "looking", "flipflops"],
+    ["He", "told", "me", "he", "needed", "size"],
+    ["She", "asked", "where", "I", "bought", "bracelet"],
+    ["These", "sunglasses", "are", "very", "cheap", "today"],
+    ["Do", "you", "like", "baggy", "oversized", "clothes"],
+    ["Wear", "warm", "tracksuit", "in", "cold", "winter"]
   ],
   "U8 Recent Events": [
-    {
-      title: "Present Perfect & Modals (المضارع التام والأفعال الناقصة)",
-      desc: "• You must wear a seatbelt while driving.<br><span style='color:#57606f;'>يجب عليك ارتداء حزام الأمان.</span><br><br>• You should study hard for the exam.<br><span style='color:#57606f;'>ينبغي عليك أن تذاكر بجد للاختبار.</span>"
-    }
+    ["I", "have", "already", "finished", "my", "exams"],
+    ["Have", "you", "ever", "joined", "school", "club"],
+    ["You", "must", "study", "hard", "for", "tests"],
+    ["You", "should", "consider", "good", "university", "scholarship"],
+    ["Several", "students", "graduate", "this", "happy", "semester"],
+    ["Keep", "your", "grades", "high", "every", "term"]
   ],
   "Goodbye": [
-    {
-      title: "Comprehensive Review (مراجعة شاملة)",
-      desc: "• Review all units to master English grammar successfully!<br><span style='color:#57606f;'>راجع جميع الوحدات لتتقن قواعد اللغة الإنجليزية بنجاح تام!</span>"
-    }
-  ]
-};
-const sentencesData = {
-  "Welcome": [
-    { words: ["I", "am", "a", "student"], target: "I am a student" },
-    { words: ["He", "is", "a", "journalist"], target: "He is a journalist" },
-    { words: ["This", "is", "my", "last", "name"], target: "This is my last name" },
-    { words: ["No", "problem", "at", "all"], target: "No problem at all" },
-    { words: ["Please", "go", "away", "now"], target: "Please go away now" },
-    { words: ["I", "agree", "with", "you"], target: "I agree with you" }
-  ],
-  "U1 Living Things": [
-    { words: ["Camels", "live", "in", "the", "desert"], target: "Camels live in the desert" },
-    { words: ["Insects", "are", "eaten", "by", "animals"], target: "Insects are eaten by animals" },
-    { words: ["The", "blue", "whale", "is", "huge"], target: "The blue whale is huge" },
-    { words: ["That", "spider", "has", "eight", "legs"], target: "That spider has eight legs" },
-    { words: ["A", "tortoise", "moves", "very", "slowly"], target: "A tortoise moves very slowly" },
-    { words: ["Eagles", "have", "strong", "wings"], target: "Eagles have strong wings" }
-  ],
-  "U2 Lifestyles": [
-    { words: ["I", "visited", "the", "hospital", "yesterday"], target: "I visited the hospital yesterday" },
-    { words: ["He", "was", "eating", "some", "bread"], target: "He was eating some bread" },
-    { words: ["She", "broke", "her", "arm", "today"], target: "She broke her arm today" },
-    { words: ["We", "went", "to", "the", "pharmacy"], target: "We went to the pharmacy" },
-    { words: ["He", "needs", "a", "clean", "bandage"], target: "He needs a clean bandage" },
-    { words: ["The", "soup", "is", "very", "delicious"], target: "The soup is very delicious" }
-  ],
-  "U3 Interests": [
-    { words: ["I", "love", "playing", "chess"], target: "I love playing chess" },
-    { words: ["She", "plays", "the", "violin", "well"], target: "She plays the violin well" },
-    { words: ["We", "joined", "a", "new", "club"], target: "We joined a new club" },
-    { words: ["He", "won", "the", "first", "prize"], target: "He won the first prize" },
-    { words: ["They", "went", "to", "the", "concert"], target: "They went to the concert" },
-    { words: ["I", "read", "an", "interesting", "magazine"], target: "I read an interesting magazine" }
-  ],
-  "U4 Professions": [
-    { words: ["He", "works", "as", "an", "engineer"], target: "He works as an engineer" },
-    { words: ["An", "astronaut", "goes", "to", "space"], target: "An astronaut goes to space" },
-    { words: ["The", "firefighter", "saved", "the", "man"], target: "The firefighter saved the man" },
-    { words: ["She", "is", "a", "robotics", "engineer"], target: "She is a robotics engineer" },
-    { words: ["A", "satellite", "orbits", "the", "earth"], target: "A satellite orbits the earth" },
-    { words: ["Police", "officers", "protect", "our", "city"], target: "Police officers protect our city" }
-  ],
-  "U5 World Sports": [
-    { words: ["Our", "team", "won", "the", "match"], target: "Our team won the match" },
-    { words: ["He", "is", "the", "fastest", "player"], target: "He is the fastest player" },
-    { words: ["They", "entered", "a", "hard", "race"], target: "They entered a hard race" },
-    { words: ["Football", "is", "very", "popular", "globally"], target: "Football is very popular globally" },
-    { words: ["She", "loves", "ice", "skating", "outside"], target: "She loves ice skating outside" },
-    { words: ["The", "referee", "blew", "his", "whistle"], target: "The referee blew his whistle" }
-  ],
-  "U6 Environments": [
-    { words: ["We", "must", "protect", "nature"], target: "We must protect nature" },
-    { words: ["The", "river", "flows", "down", "east"], target: "The river flows down east" },
-    { words: ["They", "explored", "a", "deep", "cave"], target: "They explored a deep cave" },
-    { words: ["A", "big", "storm", "started", "suddenly"], target: "A big storm started suddenly" },
-    { words: ["Turn", "left", "near", "the", "bridge"], target: "Turn left near the bridge" },
-    { words: ["Pollution", "harms", "our", "environment"], target: "Pollution harms our environment" }
-  ],
-  "U7 Styles": [
-    { words: ["He", "is", "wearing", "warm", "gloves"], target: "He is wearing warm gloves" },
-    { words: ["These", "sneakers", "are", "very", "cheap"], target: "These sneakers are very cheap" },
-    { words: ["She", "bought", "a", "new", "tracksuit"], target: "She bought a new tracksuit" },
-    { words: ["His", "jacket", "has", "cool", "stripes"], target: "His jacket has cool stripes" },
-    { words: ["I", "need", "sunglasses", "in", "summer"], target: "I need sunglasses in summer" },
-    { words: ["That", "shirt", "is", "too", "baggy"], target: "That shirt is too baggy" }
-  ],
-  "U8 Recent Events": [
-    { words: ["I", "have", "graduated", "successfully"], target: "I have graduated successfully" },
-    { words: ["She", "got", "high", "grades", "today"], target: "She got high grades today" },
-    { words: ["We", "made", "a", "great", "presentation"], target: "We made a great presentation" },
-    { words: ["He", "decided", "to", "sign", "up"], target: "He decided to sign up" },
-    { words: ["An", "inventor", "creates", "new", "things"], target: "An inventor creates new things" },
-    { words: ["They", "won", "a", "full", "scholarship"], target: "They won a full scholarship" }
-  ],
-  "Goodbye": [
-    { words: ["We", "finished", "the", "book", "together"], target: "We finished the book together" },
-    { words: ["Good", "luck", "in", "your", "exams"], target: "Good luck in your exams" },
-    { words: ["Thank", "you", "very", "much", "indeed"], target: "Thank you very much indeed" },
-    { words: ["Have", "safe", "and", "fun", "adventures"], target: "Have safe and fun adventures" },
-    { words: ["Remember", "all", "our", "great", "memories"], target: "Remember all our great memories" },
-    { words: ["See", "you", "next", "year", "again"], target: "See you next year again" }
+    ["We", "finished", "Top", "Goal", "school", "successfully"],
+    ["Good", "luck", "in", "your", "final", "exams"],
+    ["Have", "an", "amazing", "holiday", "adventure", "now"],
+    ["See", "you", "next", "year", "my", "friend"],
+    ["Always", "speak", "english", "with", "great", "confidence"],
+    ["Learning", "languages", "opens", "bright", "doors", "everywhere"]
   ]
 };
 
-const convData = {
-  "Welcome": [{"s":"A","en":"Where is the gate?","ar":"أين البوابة؟"},{"s":"B","en":"It's over there, near the taxi.","ar":"هناك، قرب التاكسي"}],
-  "U1 Living Things": [{"s":"A","en":"Have you ever seen a beetle?","ar":"هل رأيت خنفساء من قبل؟"}],
-  "U2 Lifestyles": [{"s":"A","en":"What do people eat on Eid?","ar":"ماذا يأكل الناس في العيد؟"}],
-  "U3 Interests": [{"s":"A","en":"I am going to travel to Abha.","ar":"سأسافر إلى أبها."}],
-  "U4 Professions": [{"s":"A","en":"What will you do if you graduate?","ar":"ماذا ستفعل إذا تخرجت؟"}],
-  "U5 World Sports": [{"s":"A","en":"Which sport is more popular?","ar":"أي رياضة أشهر؟"}],
-  "U6 Environments": [{"s":"A","en":"You must not throw glass.","ar":"يجب ألا ترمي الزجاج."}],
-  "U7 Styles": [{"s":"A","en":"Those sunglasses are expensive!","ar":"تلك النظارة غالية!"}],
-  "U8 Recent Events": [{"s":"A","en":"Have you finished your storyboard?","ar":"هل أنهيت قصتك المصورة؟"}],
-  "Goodbye": [{"s":"A","en":"We had an amazing adventure!","ar":"لقد خضنا مغامرة مذهلة!"}]
+// 3 أسئلة اختبار لكل وحدة
+const quizzesData = {
+  "Welcome": [
+    { q: "1. Choose the correct tense form:", opts: ["She play tennis", "She plays tennis", "She playing tennis"], correct: 1 },
+    { q: "2. What is the correct question form?", opts: ["Where you live?", "Where do you live?", "Where does you live?"], correct: 1 },
+    { q: "3. Choose the right pronoun:", opts: ["Me and him are friends", "He and I are friends", "Him and I are friends"], correct: 1 }
+  ],
+  "U1 Living Things": [
+    { q: "1. Choose the correct passive form:", opts: ["English is spoken here", "English speaks here", "English are speak here"], correct: 0 },
+    { q: "2. The camel lives in the...", opts: ["ocean", "desert", "pond"], correct: 1 },
+    { q: "3. Choose the correct descriptive adjective:", opts: ["An elephant is heavy", "An elephant is heavyly", "An elephant heavys"], correct: 0 }
+  ],
+  "U2 Lifestyles": [
+    { q: "1. If you heat ice, it...", opts: ["melt", "melts", "will melt"], correct: 1 },
+    { q: "2. If it rains tomorrow, we...", opts: ["stay home", "will stay home", "stayed home"], correct: 1 },
+    { q: "3. Choose the healthy option:", opts: ["Cereal and milk", "Soda and chips", "Candy and oil"], correct: 0 }
+  ],
+  "U3 Interests": [
+    { q: "1. I have lived here ........ 3 years.", opts: ["since", "for", "at"], correct: 1 },
+    { q: "2. She has worked in this school ........ 2022.", opts: ["for", "since", "in"], correct: 1 },
+    { q: "3. He is interested ........ playing chess.", opts: ["in", "on", "at"], correct: 0 }
+  ],
+  "U4 Professions": [
+    { q: "1. I was reading when the phone...", opts: ["ring", "rang", "ringing"], correct: 1 },
+    { q: "2. Who works in space?", opts: ["Astronaut", "Firefighter", "Chef"], correct: 0 },
+    { q: "3. They ........ sleeping when I arrived.", opts: ["was", "were", "are"], correct: 1 }
+  ],
+  "U5 World Sports": [
+    { q: "1. Ali is ........ than Sami.", opts: ["tall", "taller", "tallest"], correct: 1 },
+    { q: "2. This is the ........ mountain in the world.", opts: ["high", "higher", "highest"], correct: 2 },
+    { q: "3. Which one is a team sport?", opts: ["Golf", "Volleyball", "Skiing"], correct: 1 }
+  ],
+  "U6 Environments": [
+    { q: "1. You ........ protect the environment.", opts: ["must", "mustn't", "don't"], correct: 0 },
+    { q: "2. You ........ drop litter in the street.", opts: ["must", "mustn't", "can"], correct: 1 },
+    { q: "3. Where can you find water and trees?", opts: ["Desert", "Forest", "Cave"], correct: 1 }
+  ],
+  "U7 Styles": [
+    { q: "1. ........ are my new sunglasses.", opts: ["This", "That", "These"], correct: 2 },
+    { q: "2. Clothes that are very big are called...", opts: ["tight", "oversized", "short"], correct: 1 },
+    { q: "3. The opposite of expensive is...", opts: ["cheap", "old", "big"], correct: 0 }
+  ],
+  "U8 Recent Events": [
+    { q: "1. He has ........ finished his homework.", opts: ["yet", "already", "ago"], correct: 1 },
+    { q: "2. When you finish school you...", opts: ["graduate", "fail", "leave"], correct: 0 },
+    { q: "3. Choose the correct spelling:", opts: ["application", "aplicatun", "aplication"], correct: 0 }
+  ],
+  "Goodbye": [
+    { q: "1. We had an amazing ........ this year.", opts: ["adventure", "danger", "error"], correct: 0 },
+    { q: "2. What do you wear when it's cold?", opts: ["Sunglasses", "Warm jacket", "Swimsuit"], correct: 1 },
+    { q: "3. Choose the correct past form of go:", opts: ["goed", "went", "gone"], correct: 1 }
+  ]
 };
 
-const phonicsData = {
-  "Welcome": [{ sound: "/θ/ th", desc: "مثل thanks", en: "thanks - three" }],
-  "U1 Living Things": [{ sound: "/ʃ/ sh", desc: "مثل creature", en: "creature - ostrich" }],
-  "U2 Lifestyles": [{ sound: "/s/ and /z/", desc: "أصوات السين والزين", en: "soup - soap" }],
-  "U3 Interests": [{ sound: "/ɪə/ ear", desc: "صوت إير المركب", en: "near - hear" }],
-  "U4 Professions": [{ sound: "/f/ and /v/", desc: "أصوات الفاء والفي", en: "fire - five" }],
-  "U5 World Sports": [{ sound: "/w/ and /j/", desc: "أصوات الدبليو والي", en: "win - year" }],
-  "U6 Environments": [{ sound: "/h/ sound", desc: "صوت الهاء الهادئ", en: "high - hill" }],
-  "U7 Styles": [{ sound: "/e/ and /æ/", desc: "فرق الفتحات", en: "baggy - cheap" }],
-  "U8 Recent Events": [{ sound: "/t/ and /d/ past", desc: "نطق الأفعال الماضية", en: "graduated - decided" }],
-  "Goodbye": [{ sound: "Phonics Review", desc: "مراجعة شاملة للأصوات", en: "thanks - storm" }]
+const projectsData = {
+  "U1 Living": { title: "U1: بوستر عن حيوان بري", fields: ["اسم الحيوان (Animal)", "أين يعيش؟ (Habitat)", "ماذا يأكل؟", "حقيقة مذهلة"] },
+  "U2 Culture": { title: "U2: عادة ثقافية", fields: ["اسم العادة", "متى نفعلها؟", "ماذا نلبس / نأكل؟", "كيف تختلف عن ثقافة ثانية؟"] },
+  "U3 Travel": { title: "U3: بروشور سياحي عن مدينة سعودية", fields: ["اسم المدينة (Abha / Jeddah / AlUla)", "أفضل فندق", "أجمل مكان تزوره", "ماذا تشتري؟"] },
+  "U4 Future": { title: "U4: خطتي المستقبلية", fields: ["ماذا ستفعل إذا تخرجت؟ If I graduate, I will...", "ما وظيفة أحلامك؟", "ما المنحة التي تريدها؟"] },
+  "U5 Sports": { title: "U5: تقرير عن رياضة", fields: ["اسم الرياضة", "اسم الملعب / البطولة", "من الفائز؟", "لماذا تحبها؟"] },
+  "U6 Envir": { title: "U6: حملة حماية البيئة", fields: ["المشكلة (تلوث / زجاج / بلاستيك)", "You must...", "You mustn't...", "شعار الحملة"] },
+  "U7 Styles": { title: "U7: كتالوج أزياء", fields: ["وصف لبس رخيص cheap", "وصف لبس غالي expensive", "قارن: as... as"] },
+  "U8 Events": { title: "U8: Storyboard حدث أخير", fields: ["عنوان الحدث (تخرجي / رحلتي)", "ماذا حدث أولاً؟", "ماذا حدث أخيراً؟", "شعورك"] }
 };
 
-const readsData = {
-  "Welcome": {en: "Welcome to Top Goal 3. Learning English helps you communicate easily.", ar: "أهلاً بك في توب جول 3. تعلم الإنجليزية يساعدك على التواصل بسهولة."},
-  "U1 Living Things": {en: "Camels live in the desert and walk for days without water.", ar: "الجمال تعيش في الصحراء وتمشي لأيام بدون ماء."},
-  "U2 Lifestyles": {en: "Healthy lifestyle keeps us fit and strong.", ar: "نمط الحياة الصحي يبقينا بصحة وقوة."},
-  "U3 Interests": {en: "I traveled to Abha last summer. It was cool and foggy.", ar: "سافرت لأبها الصيف الماضي، وكانت باردة وضبابية."},
-  "U4 Professions": {en: "Astronauts travel to space and firefighters save lives.", ar: "رواد الفضاء يسافرون للفضاء ورجال الإطفاء ينقذون الأرواح."},
-  "U5 World Sports": {en: "Team sports like football and volleyball are exciting.", ar: "الرياضات الجماعية مثل كرة القدم والطائرة مثيرة."},
-  "U6 Environments": {en: "We must protect nature and never pollute rivers.", ar: "يجب أن نحمي الطبيعة وألا نلوث الأنهار أبداً."},
-  "U7 Styles": {en: "We wear light clothes in summer and warm clothes in winter.", ar: "نرتدي ملابس خفيفة صيفاً ودافئة شتاءً."},
-  "U8 Recent Events": {en: "I have just graduated and applied for a scholarship.", ar: "تخرجت للتو وتقدمت بطلب منحة دراسية."},
-  "Goodbye": {en: "We finished Top Goal 3 successfully. Good luck!", ar: "أنهينا توب جول 3 بنجاح. بالتوفيق!"}
-};
-
-const bank = [
-  {q:"ما معنى Beetle?",opts:["خنفساء","فراشة","نسر"],a:0},
-  {q:"I ___ walking when I saw a camel.",opts:["was","is","were"],a:0},
-  {q:"If it rains, we ___ stay home.",opts:["will","was","had"],a:0},
-  {q:"The man ___ was talking is friendly.",opts:["who","where","when"],a:0},
-  {q:"I have ___ finished my homework.",opts:["already","yesterday","last week"],a:0},
-  {q:"عكس expensive?",opts:["cheap","foggy","wild"],a:0},
-  {q:"You ___ protect the environment.",opts:["must","mustn't","did"],a:0},
-  {q:"Volleyball is ___ than snowboarding.",opts:["more popular","most popular","popular"],a:0},
-  {q:"ما معنى scholarship?",opts:["منحة","جسر","بوابة"],a:0},
-  {q:"Have you graduated ___?",opts:["yet","ago","was"],a:0}
-];
-
-function speak(t, rate=0.75){
-  let u = new SpeechSynthesisUtterance(t);
-  u.lang = 'en-US';
-  u.rate = rate;
-  speechSynthesis.cancel();
-  speechSynthesis.speak(u);
-  totalStars++;
-  document.getElementById('stars-count').textContent = totalStars;
-}
+// حالة مؤشر الجمل لكل وحدة (تبدأ بالجملة رقم 0)
+let currentSentenceIndices = {};
 
 const tabs = document.getElementById('tabs');
 const cont = document.getElementById('cont');
-let first = true;
 
-for(let unitName in allData){
-  let b = document.createElement('button');
-  b.className = 'tab' + (first ? ' active' : '');
-  b.textContent = unitName;
-  b.onclick = () => {
-    document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
-    b.classList.add('active');
-    document.querySelectorAll('.unit').forEach(x => x.classList.remove('active'));
-    document.getElementById('unit-' + unitName).classList.add('active');
+// بناء أقسام الوحدات الدراسية
+for (let unitName in allData) {
+  currentSentenceIndices[unitName] = 0;
+  
+  let btn = document.createElement('button');
+  btn.className = 'tab';
+  btn.textContent = unitName;
+  let unitIdSafe = unitName.replace(/\s+/g, '-');
+  
+  btn.onclick = () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.unit').forEach(u => u.classList.remove('active'));
+    document.getElementById('unit-' + unitIdSafe).classList.add('active');
   };
-  tabs.appendChild(b);
+  tabs.appendChild(btn);
 
-  let d = document.createElement('div');
-  d.id = 'unit-' + unitName;
-  d.className = 'unit' + (first ? ' active' : '');
+  let unitDiv = document.createElement('div');
+  unitDiv.id = 'unit-' + unitIdSafe;
+  unitDiv.className = 'unit';
   
-  let gridHtml = `<h3 style="font-size:13px; color:#2c3e50; margin-bottom:6px;">📖 مفردات الوحدة:</h3><div class="grid">`;
-  allData[unitName].forEach(w => {
-    let cleanEn = w.en.replace(/'/g, "\\'");
-    let id = w.en.replace(/[^a-zA-Z0-9]/g, '_') + '_' + unitName.replace(/[^a-zA-Z0-9]/g, '');
-    gridHtml += `<div class="word-card">
-      <div class="word-en">${w.en}</div>
-      <div class="word-ar-box">${w.ar}</div>
-      <div id="res-${id}" style="font-size:10px; color:#2ed573; font-weight:bold; margin-bottom:4px;"></div>
-      <div class="card-btns">
-        <button class="btn-mini btn-mic" onclick="listenWord('${cleanEn}', this, '${id}')">🎤</button>
-        <button class="btn-mini btn-audio" onclick="speak('${cleanEn}')">🔊</button>
+  let htmlContent = `<h2 style="color:#2c3e50;font-size:15px;margin-bottom:10px;text-align:center;">📖 وحدة: ${unitName}</h2>`;
+  
+  // شبكة الكلمات (تحتوي على زر الصوت، وزر الميكروفون النطق، وزر العين للكشف)
+  htmlContent += `<div class="grid">`;
+  allData[unitName].forEach((wordObj, idx) => {
+    htmlContent += `
+      <div class="word-card">
+        <div class="word-en">${wordObj.en}</div>
+        <div class="word-ar-box" id="ar-${unitIdSafe}-${idx}" style="display:none;">${wordObj.ar}</div>
+        <div class="card-btns">
+          <button class="btn-mini btn-audio" onclick="speak('${wordObj.en.replace(/'/g, "\\'")}')" title="استمع">🔊</button>
+          <button class="btn-mini btn-mic" onclick="listenMic('${wordObj.en.replace(/'/g, "\\'")}', '${unitIdSafe}-${idx}')" title="تدرب على النطق">🎤</button>
+          <button class="btn-mini btn-eye" onclick="toggleReveal('${unitIdSafe}', ${idx})" title="عرض المعنى">👁️</button>
+        </div>
+        <div class="listening-indicator" id="mic-status-${unitIdSafe}-${idx}">استماع... انطق الكلمة الآن</div>
       </div>
-    </div>`;
+    `;
   });
-  gridHtml += `</div>`;
+  htmlContent += `</div>`;
 
-  let rulesHtml = `<div class="rules-bottom-section"><div class="rules-title">📌 قواعد الوحدة:</div>`;
-  if(rulesData[unitName]){
+  // قواعد الوحدة
+  if (rulesData[unitName]) {
+    htmlContent += `<div class="rules-bottom-section"><div class="rules-title">📌 قواعد الوحدة والشرح الرسمي</div>`;
     rulesData[unitName].forEach(rule => {
-      let cleanRuleText = (rule.title + ". " + rule.desc).replace(/'/g, "\\'");
-      rulesHtml += `<div class="rule-box-item"><div class="rule-flex"><div><div class="rule-ar-title">🔹 ${rule.title}</div><div class="rule-ar-desc">${rule.desc}</div></div><button class="speak-rule-btn" onclick="speak('${cleanRuleText}')">🔊 استمع</button></div></div>`;
+      htmlContent += `<div style="margin-bottom:10px;"><div style="font-weight:bold;color:#2c3e50;font-size:13px;margin-bottom:4px;">${rule.title}</div>${rule.desc}</div>`;
     });
+    htmlContent += `</div>`;
   }
-  rulesHtml += `</div>`;
 
-  let challengeHtml = `<div class="challenge-section" id="chal-${unitName}">
-    <div class="challenge-header"><div class="challenge-title">📝 تحدي ترتيب الجمل (6 جمل):</div><div class="challenge-counter" id="counter-${unitName}">جملة 1 من 6</div></div>
-    <div class="drop-zone" id="zone-${unitName}"></div>
-    <div style="display:flex; gap:4px; flex-wrap:wrap; direction:ltr;" id="bank-${unitName}"></div>
-    <div id="feedback-${unitName}" class="feedback-msg"></div>
-    <div style="text-align:center; margin-top:10px; display:flex; justify-content:center; gap:8px;">
-      <button class="btn-reset" onclick="resetChallenge('${unitName}')">🔄 إعادة</button>
-      <button class="btn-action" onclick="checkAnswer('${unitName}')">تحقق ✨</button>
-    </div>
-  </div>`;
-
-  let convHtml = `<div class="conv-section"><div class="conv-title">💬 محادثة الوحدة:</div><div class="row">`;
-  if(convData[unitName]){
-    convData[unitName].forEach(c => {
-      let cleanEnConv = c.en.replace(/'/g, "");
-      convHtml += `<div class="bubble ${c.s=='A'?'a':'b'}"><b>${c.s}: ${c.en}</b><br><small>${c.ar}</small><br><button class="btn-conv" onclick="speak('${cleanEnConv}')">🔊 استمع</button></div>`;
-    });
-  }
-  convHtml += `</div></div>`;
-
-  let phonicsHtml = `<div class="phonics-section"><div class="phonics-title">🔊 الصوتيات والنطق (Phonics):</div>`;
-  if(phonicsData[unitName]){
-    phonicsData[unitName].forEach(p => {
-      let cleanPEn = p.en.replace(/'/g, "");
-      phonicsHtml += `<div class="p-card"><span class="sound">${p.sound}</span> - <span style="font-size:12px;">${p.desc}</span><br><span class="en-sound">${p.en}</span><div style="margin-top:6px;"><button class="btn-phonics" onclick="speak('${cleanPEn}', 0.6)">🔊 بطيء</button></div></div>`;
-    });
-  }
-  phonicsHtml += `</div>`;
-
-  let readingHtml = `<div class="reading-section"><div class="reading-title">📚 قراءة النصوص:</div>`;
-  if(readsData[unitName]){
-    let rObj = readsData[unitName];
-    let cleanReadEn = rObj.en.replace(/'/g, "");
-    readingHtml += `<div class="enTxt">${rObj.en}</div><div class="arTxt">${rObj.ar}</div><button class="btn-reading" onclick="speak('${cleanReadEn}', 0.75)">🔊 اقرأ</button>`;
-  }
-  readingHtml += `</div>`;
-
-  let quizHtml = `<div class="quiz-section">
-    <div style="font-weight:bold; font-size:13px; margin-bottom:6px;">📝 اختبار الكلمات والقواعد:</div>
-    <div class="quiz-card" id="quiz-box-${unitName}"></div>
-    <div id="quiz-fb-${unitName}" class="quiz-feedback"></div>
-    <div style="display:flex; gap:6px; margin-top:8px;">
-      <button class="quiz-btn" onclick="nextQuiz('${unitName}')">السؤال التالي ⏭️</button>
-      <button class="quiz-btn" style="background:#ff4757;" onclick="resetQuiz('${unitName}')">إعادة 🔄</button>
-    </div>
-  </div>`;
-
-  d.innerHTML = gridHtml + rulesHtml + challengeHtml + convHtml + phonicsHtml + readingHtml + quizHtml;
-  cont.appendChild(d);
-  first = false;
+  // تحدي ترتيب 6 جمل متتالية (جملة تلو الأخرى)
+  htmlContent += `
+    <div class="challenge-section">
+      <div class="challenge-header">
+        <span class="challenge-title" id="challenge-title-${unitIdSafe}">🧩 تدريب ترتيب الجمل (الجملة 1 من 6)</span>
+      </div>
+      <div class="drop-zone" id="drop-${unitIdSafe}">اسحب الكلمات هنا بترتيبها الصحيح...</div>
+      <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px;" id="chips-container-${unitIdSafe}">
+  `;
   
-  setTimeout(() => {
-    resetChallenge(unitName);
-    loadQuiz(unitName);
-  }, 100);
+  // عرض كلمات الجملة الأولى للبدء
+  let firstSentenceWords = unitSentencesMap[unitName][0];
+  let shuffledWords = [...firstSentenceWords].sort(() => Math.random() - 0.5);
+  shuffledWords.forEach(w => {
+    htmlContent += `<div class="word-chip" onclick="addWord(this, '${unitIdSafe}')">${w}</div>`;
+  });
+
+  htmlContent += `
+      </div>
+      <div class="feedback-msg" id="feedback-${unitIdSafe}"></div>
+      <button class="btn-action" onclick="checkSentence('${unitIdSafe}')">تحقق من الترتيب</button>
+      <button class="btn-reset" onclick="resetSentence('${unitIdSafe}')">إعادة ضبط الجملة</button>
+    </div>
+  `;
+
+  // المحادثات
+  htmlContent += `
+    <div class="conv-section">
+      <div class="conv-title">💬 محادثات تفاعلية</div>
+      <div class="row">
+        <div class="bubble a">Hello! How can I help you today? <button class="btn-conv" onclick="speak('Hello! How can I help you today?')">🔊</button></div>
+        <div class="bubble b">I am studying unit ${unitName} right now. <button class="btn-conv" onclick="speak('I am studying unit ${unitName} right now.')">🔊</button></div>
+      </div>
+    </div>
+  `;
+
+  // الصوتيات Phonics
+  htmlContent += `
+    <div class="phonics-section">
+      <div class="phonics-title">🗣️ نطق الصوتيات (Phonics)</div>
+      <div class="p-card">
+        <span class="sound">/æ/</span>
+        <div><span class="en-sound">cat</span> <span class="en-sound">hat</span> <span class="en-sound">mat</span></div>
+        <button class="btn-phonics" onclick="speak('cat hat mat')">🔊 استمع للصوتيات</button>
+      </div>
+    </div>
+  `;
+
+  // القراءة
+  htmlContent += `
+    <div class="reading-section">
+      <div class="reading-title">📖 نصوص القراءة</div>
+      <div class="enTxt">Reading practice text for unit ${unitName}. Learning English grammar and vocabulary helps us communicate successfully every day.</div>
+      <div class="arTxt">نص ممارسة القراءة للوحدة. تعلم قواعد ومفردات اللغة الإنجليزية يساعدنا على التواصل بنجاح كل يوم.</div>
+      <button class="btn-reading" onclick="speak('Reading practice text for unit ${unitName}. Learning English grammar and vocabulary helps us communicate successfully every day.')">🔊 استمع للنص كاملاً</button>
+    </div>
+  `;
+
+  // الاختبارات القصيرة (3 أسئلة)
+  let unitQuizzes = quizzesData[unitName] || quizzesData["Welcome"];
+  htmlContent += `
+    <div class="quiz-section">
+      <div class="quiz-title" style="font-weight:bold;margin-bottom:8px;">🎯 اختبار قصير للوحدة (3 أسئلة)</div>
+  `;
+  unitQuizzes.forEach((qObj, qIdx) => {
+    htmlContent += `
+      <div class="quiz-card">
+        <div class="quiz-q">${qObj.q}</div>
+    `;
+    qObj.opts.forEach((optText, optIdx) => {
+      let isCorrect = (optIdx === qObj.correct);
+      htmlContent += `<div class="opt" onclick="selectOpt(this, ${isCorrect})">${optText}</div>`;
+    });
+    htmlContent += `<div class="quiz-feedback"></div></div>`;
+  });
+  htmlContent += `</div>`;
+
+  unitDiv.innerHTML = htmlContent;
+  cont.appendChild(unitDiv);
 }
 
-// إضافة قسم المشاريع كـ Tab أخير دون تغيير كود المشاريع الأصلي
-let projTabBtn = document.createElement('button');
-projTabBtn.className = 'tab';
-projTabBtn.textContent = '🎨 المشاريع';
-projTabBtn.onclick = () => {
-  document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
-  projTabBtn.classList.add('active');
-  document.querySelectorAll('.unit').forEach(x => x.classList.remove('active'));
-  document.getElementById('unit-ProjectsSection').classList.add('active');
+// تبويب المشاريع المستقل
+let projBtn = document.createElement('button');
+projBtn.className = 'tab';
+projBtn.textContent = '🎨 المشاريع';
+projBtn.onclick = () => {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  projBtn.classList.add('active');
+  document.querySelectorAll('.unit').forEach(u => u.classList.remove('active'));
+  document.getElementById('unit-Projects-Page').classList.add('active');
 };
-tabs.appendChild(projTabBtn);
+tabs.appendChild(projBtn);
 
 let projUnitDiv = document.createElement('div');
-projUnitDiv.id = 'unit-ProjectsSection';
+projUnitDiv.id = 'unit-Projects-Page';
 projUnitDiv.className = 'unit';
-
-let projInnerHtml = `<div class="projects-container">
-  <div style="background:#fff;padding:14px;border-radius:16px;text-align:center;margin-bottom:10px;">
-    <h2>🎨 Top Goal 3 - مشاريع الوحدات - جاهز للطباعة</h2>
-    <p>عبّي القالب واضغط طباعة PDF وقدمه للمدرس</p>
-  </div>
-  <div class="projects-subtabs" id="proj-tabs"></div>
-  <div id="proj-cont"></div>
+projUnitDiv.innerHTML = `<h2 style="color:#2c3e50;font-size:15px;margin-bottom:10px;text-align:center;">🎨 قسم المشاريع المدرسية الشاملة</h2>
+<div class="projects-container">
+  <div class="projects-subtabs" id="proj-subtabs"></div>
+  <div id="proj-content-area"></div>
 </div>`;
-projUnitDiv.innerHTML = projInnerHtml;
 cont.appendChild(projUnitDiv);
 
-const projs={
-"U1 Living":{"title":"U1: بوستر عن حيوان بري","fields":["اسم الحيوان (Animal)","أين يعيش؟ (Habitat)","ماذا يأكل؟","حقيقة مذهلة"]},
-"U2 Culture":{"title":"U2: عادة ثقافية","fields":["اسم العادة","متى نفعلها؟","ماذا نلبس / نأكل؟","كيف تختلف عن ثقافة ثانية؟"]},
-"U3 Travel":{"title":"U3: بروشور سياحي عن مدينة سعودية","fields":["اسم المدينة (Abha / Jeddah / AlUla)","أفضل فندق","أجمل مكان تزوره","ماذا تشتري؟"]},
-"U4 Future":{"title":"U4: خطتي المستقبلية","fields":["ماذا ستفعل إذا تخرجت؟ If I graduate, I will...","ما وظيفة أحلامك؟","ما المنحة التي تريدها؟"]},
-"U5 Sports":{"title":"U5: تقرير عن رياضة","fields":["اسم الرياضة","اسم الملعب / البطولة","من الفائز؟","لماذا تحبها؟"]},
-"U6 Envir":{"title":"U6: حملة حماية البيئة","fields":["المشكلة (تلوث / زجاج / بلاستيك)","You must...","You mustn't... / You shouldn't...","شعار الحملة"]},
-"U7 Styles":{"title":"U7: كتالوج أزياء","fields":["وصف لبس رخيص cheap","وصف لبس غالي expensive","قارن: as... as"]},
-"U8 Events":{"title":"U8: Storyboard حدث أخير","fields":["عنوان الحدث (تخرجي / رحلتي)","ماذا حدث أولاً؟","ماذا حدث أخيراً؟","شعورك"]}
-};
+document.querySelector('.tab').click();
 
-const projTabs = projUnitDiv.querySelector('#proj-tabs');
-const projCont = projUnitDiv.querySelector('#proj-cont');
-let projFirst = true;
+setTimeout(() => {
+  let subtabsContainer = document.getElementById('proj-subtabs');
+  let contentArea = document.getElementById('proj-content-area');
+  let firstProj = true;
 
-for(let k in projs){
- let b = document.createElement('button');
- b.className = 'projects-tab' + (projFirst ? ' active' : '');
- b.textContent = k;
- b.onclick = () => {
-  projTabs.querySelectorAll('.projects-tab').forEach(x => x.classList.remove('active'));
-  b.classList.add('active');
-  projCont.querySelectorAll('.projects-unit').forEach(x => x.classList.remove('active'));
-  projCont.querySelector('#u-' + k).classList.add('active');
- };
- projTabs.appendChild(b);
+  for (let pKey in projectsData) {
+    let pObj = projectsData[pKey];
+    let sBtn = document.createElement('button');
+    sBtn.className = 'projects-tab' + (firstProj ? ' active' : '');
+    sBtn.textContent = pObj.title;
 
- let d = document.createElement('div');
- d.id = 'u-' + k;
- d.className = 'projects-unit' + (projFirst ? ' active' : '');
- 
- let html = `<h3>${projs[k].title}</h3><p>الاسم: <input id="name-${k}" placeholder="اسم الطالب"></p>`;
- projs[k].fields.forEach((f, i) => {
-  html += `<label>${f}</label>${f.length < 20 ? `<input id="${k}-${i}">` : `<textarea id="${k}-${i}" rows="2"></textarea>`}`;
- });
- html += `<br><button class="projects-btn" onclick="window.print()">🖨️ طباعة / حفظ PDF</button> <button class="projects-btn print" onclick="speakProj('${projs[k].title}')">🔊</button>`;
- d.innerHTML = html;
- projCont.appendChild(d);
- projFirst = false;
-}
+    let pUnitId = 'proj-item-' + pKey.replace(/\s+/g, '-');
 
-function speakProj(t){
-  let u = new SpeechSynthesisUtterance(t);
-  u.lang = 'en-US';
-  u.rate = 0.8;
-  speechSynthesis.cancel();
-  speechSynthesis.speak(u);
-}
+    sBtn.onclick = () => {
+      document.querySelectorAll('.projects-tab').forEach(t => t.classList.remove('active'));
+      sBtn.classList.add('active');
+      document.querySelectorAll('.projects-unit').forEach(u => u.classList.remove('active'));
+      document.getElementById(pUnitId).classList.add('active');
+    };
+    subtabsContainer.appendChild(sBtn);
 
-window.chalStates = {};
-for(let u in sentencesData) { window.chalStates[u] = 0; }
-
-function moveWord(chip, unitName) {
-  let zone = document.getElementById('zone-' + unitName);
-  let bankContainer = document.getElementById('bank-' + unitName);
-  if(chip.parentElement === bankContainer) { zone.appendChild(chip); } 
-  else { bankContainer.appendChild(chip); }
-}
-
-function resetChallenge(unitName) {
-  let idx = window.chalStates[unitName] || 0;
-  let sList = sentencesData[unitName] || sentencesData["Welcome"];
-  let targetS = sList[idx];
-  let zone = document.getElementById('zone-' + unitName);
-  let bankContainer = document.getElementById('bank-' + unitName);
-  if(!zone || !bankContainer) return;
-  zone.innerHTML = '';
-  bankContainer.innerHTML = '';
-  let shuffled = [...targetS.words].sort(() => Math.random() - 0.5);
-  shuffled.forEach(w => {
-    let span = document.createElement('span');
-    span.className = 'word-chip';
-    span.textContent = w;
-    span.onclick = function() { moveWord(this, unitName); };
-    bankContainer.appendChild(span);
-  });
-  let fb = document.getElementById('feedback-' + unitName);
-  if(fb) fb.style.display = 'none';
-}
-
-function checkAnswer(unitName) {
-  let idx = window.chalStates[unitName] || 0;
-  let sList = sentencesData[unitName] || sentencesData["Welcome"];
-  let targetS = sList[idx];
-  let zone = document.getElementById('zone-' + unitName);
-  let userWords = Array.from(zone.children).map(c => c.textContent);
-  let userSentence = userWords.join(" ");
-  let fb = document.getElementById('feedback-' + unitName);
-  fb.style.display = 'block';
-  
-  if(userSentence === targetS.target) {
-    fb.style.background = '#d4edda'; fb.style.color = '#155724';
-    fb.innerHTML = '🎉 إجابة صحيحة ممتاز!';
-    totalStars += 10; totalStreak += 1;
-    document.getElementById('stars-count').textContent = totalStars;
-    document.getElementById('streak-count').textContent = totalStreak;
-    speak(targetS.target);
-    setTimeout(() => {
-      window.chalStates[unitName] = (window.chalStates[unitName] + 1) % sList.length;
-      document.getElementById('counter-' + unitName).textContent = `جملة ${window.chalStates[unitName] + 1} من ${sList.length}`;
-      resetChallenge(unitName);
-    }, 2000);
-  } else {
-    fb.style.background = '#f8d7da'; fb.style.color = '#721c24';
-    fb.innerHTML = '❌ إجابة خاطئة، حاول مجدداً بالشكل الصحيح.';
-  }
-}
-
-window.quizStates = {};
-for(let u in allData) { window.quizStates[u] = 0; }
-
-function loadQuiz(unitName) {
-  let qIdx = window.quizStates[unitName] || 0;
-  let cur = bank[qIdx % bank.length];
-  let box = document.getElementById('quiz-box-' + unitName);
-  let fb = document.getElementById('quiz-fb-' + unitName);
-  if(!box) return;
-  fb.style.display = 'none';
-  box.innerHTML = `<div class="quiz-q">${qIdx + 1}. ${cur.q}</div>` + 
-    cur.opts.map((o, i) => `<div class="opt" id="opt-${unitName}-${i}" onclick="checkQuiz('${unitName}', ${i}, this)">${o}</div>`).join('');
-}
-
-function checkQuiz(unitName, i, el) {
-  let qIdx = window.quizStates[unitName] || 0;
-  let cur = bank[qIdx % bank.length];
-  let fb = document.getElementById('quiz-fb-' + unitName);
-  
-  let allOpts = document.querySelectorAll(`[id^="opt-${unitName}-"]`);
-  allOpts.forEach(o => o.style.pointerEvents = 'none');
-
-  fb.style.display = 'block';
-  if(i === cur.a){
-    el.classList.add('correct');
-    fb.style.background = '#d4edda';
-    fb.style.color = '#155724';
-    fb.innerHTML = '✅ إجابة صحيحة أحسنت!';
-    totalStars += 5;
-    totalStreak += 1;
-    document.getElementById('stars-count').textContent = totalStars;
-    document.getElementById('streak-count').textContent = totalStreak;
-  } else {
-    el.classList.add('wrong');
-    let correctEl = document.getElementById(`opt-${unitName}-${cur.a}`);
-    if(correctEl) correctEl.classList.add('correct');
+    let pDiv = document.createElement('div');
+    pDiv.id = pUnitId;
+    pDiv.className = 'projects-unit' + (firstProj ? ' active' : '');
     
-    fb.style.background = '#f8d7da';
-    fb.style.color = '#721c24';
-    fb.innerHTML = '❌ إجابة خاطئة! الإجابة الصحيحة باللون الأخضر.';
+    let innerFields = `<h3 style="color:#2c3e50;font-size:14px;margin-bottom:8px;">${pObj.title}</h3>`;
+    innerFields += `<label>اسم الطالب:</label><input type="text" placeholder="اكتب اسمك هنا...">`;
+    
+    pObj.fields.forEach(f => {
+      innerFields += `<label>${f}:</label><input type="text" placeholder="اكتب الإجابة...">`;
+    });
+    
+    innerFields += `<br><button class="projects-btn print" onclick="window.print()">🖨️ طباعة المشروع / حفظ PDF</button>`;
+    pDiv.innerHTML = innerFields;
+    contentArea.appendChild(pDiv);
+    firstProj = false;
+  }
+}, 100);
+
+// الدوال العامة
+function speak(text) {
+  let utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = 'en-US';
+  utterance.rate = 0.85;
+  speechSynthesis.cancel();
+  speechSynthesis.speak(utterance);
+}
+
+// محاكاة أو تشغيل خاصية التعرف على الصوت للميكروفون (Speech Recognition)
+function listenMic(word, elementId) {
+  let indicator = document.getElementById('mic-status-' + elementId);
+  indicator.style.display = 'block';
+  speak(word); // ينطق الكلمة أولاً ليسمعها الطالب
+
+  if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+    setTimeout(() => {
+      indicator.style.display = 'none';
+      alert('ميزة الميكروفون غير متصفحة بالكامل هنا، استمعت للنطق الصحيح لكلمة: ' + word);
+    }, 1500);
+    return;
+  }
+
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const recognition = new SpeechRecognition();
+  recognition.lang = 'en-US';
+  recognition.interimResults = false;
+  recognition.maxAlternatives = 1;
+
+  recognition.onresult = function(event) {
+    const speechResult = event.results[0][0].transcript.trim().toLowerCase();
+    indicator.style.display = 'none';
+    if(speechResult.includes(word.toLowerCase())) {
+      alert('أحسنت! نطقك صحيح تماماً لـ: ' + word);
+      totalStars += 2;
+      document.getElementById('stars-count').textContent = totalStars;
+    } else {
+      alert('حاول مرة أخرى! سمعناك تنطق: "' + speechResult + '" والصحيح هو: ' + word);
+    }
+  };
+
+  recognition.onerror = function() {
+    indicator.style.display = 'none';
+  };
+
+  recognition.onend = function() {
+    indicator.style.display = 'none';
+  };
+
+  try {
+    recognition.start();
+  } catch(e) {
+    indicator.style.display = 'none';
   }
 }
 
-function nextQuiz(unitName) {
-  window.quizStates[unitName] = ((window.quizStates[unitName] || 0) + 1) % bank.length;
-  loadQuiz(unitName);
-}
-
-function resetQuiz(unitName) {
-  window.quizStates[unitName] = 0;
-  loadQuiz(unitName);
-}
-
-function listenWord(target, btn, id){
-  let Rec = window.SpeechRecognition || window.webkitSpeechRecognition;
-  if(!Rec){alert('يرجى فتح الصفحة في متصفح جوجل كروم (Google Chrome)');return;}
-  let rec = new Rec();
-  rec.lang = 'en-US';
-  btn.classList.add('listening');
-  btn.textContent = '🎧';
-  document.getElementById('status-msg').textContent = '🎤 انطق الكلمة: ' + target;
-  
-  rec.onresult = (e) => {
-    let said = e.results[0][0].transcript;
-    let res = document.getElementById('res-' + id);
-    let ok = said.toLowerCase().includes(target.toLowerCase().split(' ')[0]) || target.toLowerCase().includes(said.toLowerCase());
-    if(ok){
-      res.textContent = '✅ ممتاز!';
-      speak('Excellent');
-      totalStars += 5;
-      totalStreak += 1;
-    } else {
-      res.textContent = '🔁 قلت: ' + said;
-    }
-    btn.classList.remove('listening');
-    btn.textContent = '🎤';
+function toggleReveal(unitKey, index) {
+  let box = document.getElementById('ar-' + unitKey + '-' + index);
+  if (box.style.display === 'none') {
+    box.style.display = 'block';
+    totalStars += 1;
     document.getElementById('stars-count').textContent = totalStars;
-    document.getElementById('streak-count').textContent = totalStreak;
-  };
-  rec.onerror = () => {
-    btn.classList.remove('listening');
-    btn.textContent = '🎤';
-  };
-  rec.start();
+  } else {
+    box.style.display = 'none';
+  }
+}
+
+function addWord(chip, unitKey) {
+  let dropZone = document.getElementById('drop-' + unitKey);
+  if(dropZone.innerText.includes("اسحب الكلمات")) {
+    dropZone.innerHTML = "";
+  }
+  dropZone.appendChild(chip.cloneNode(true));
+}
+
+function resetSentence(unitKey) {
+  let dropZone = document.getElementById('drop-' + unitKey);
+  dropZone.innerHTML = 'اسحب الكلمات هنا بترتيبها الصحيح...';
+  document.getElementById('feedback-' + unitKey).style.display = 'none';
+}
+
+function checkSentence(unitKey) {
+  let originalKey = unitKey.replace(/-/g, ' ');
+  // استعادة اسم الوحدة الحقيقي
+  let realUnitKey = Object.keys(unitSentencesMap).find(k => k.replace(/\s+/g, '-') === unitKey);
+  if(!realUnitKey) return;
+
+  let sentencesList = unitSentencesMap[realUnitKey];
+  let currentIndex = currentSentenceIndices[realUnitKey];
+  let currentCorrectSentenceWords = sentencesList[currentIndex];
+
+  let dropZone = document.getElementById('drop-' + unitKey);
+  let userWords = [];
+  dropZone.querySelectorAll('.word-chip').forEach(c => userWords.push(c.textContent));
+  let userStr = userWords.join(" ");
+  let correctStr = currentCorrectSentenceWords.join(" ");
+
+  let fb = document.getElementById('feedback-' + unitKey);
+  fb.style.display = 'block';
+
+  if(userStr.toLowerCase() === correctStr.toLowerCase()) {
+    totalStars += 3;
+    document.getElementById('stars-count').textContent = totalStars;
+    currentIndex++;
+    currentSentenceIndices[realUnitKey] = currentIndex;
+
+    if(currentIndex < sentencesList.length) {
+      fb.style.background = '#2ed573';
+      fb.style.color = '#fff';
+      fb.textContent = `إجابة صحيحة! تم الانتقال تلقائياً للجملة التالية (${currentIndex + 1} من 6) 🎉`;
+      
+      // تحميل الجملة التالية
+      setTimeout(() => {
+        resetSentence(unitKey);
+        document.getElementById('challenge-title-' + unitKey).textContent = `🧩 تدريب ترتيب الجمل (الجملة ${currentIndex + 1} من 6)`;
+        let nextWords = [...sentencesList[currentIndex]].sort(() => Math.random() - 0.5);
+        let chipsContainer = document.getElementById('chips-container-' + unitKey);
+        chipsContainer.innerHTML = '';
+        nextWords.forEach(w => {
+          chipsContainer.innerHTML += `<div class="word-chip" onclick="addWord(this, '${unitKey}')">${w}</div>`;
+        });
+        fb.style.display = 'none';
+      }, 1500);
+
+    } else {
+      fb.style.background = '#2ed573';
+      fb.style.color = '#fff';
+      fb.textContent = 'مذهل! أتممت جميع الجمل الـ 6 الخاصة بهذه الوحدة بنجاح تام! 🌟🏆';
+      totalStars += 10;
+      document.getElementById('stars-count').textContent = totalStars;
+    }
+  } else {
+    fb.style.background = '#ff4757';
+    fb.style.color = '#fff';
+    fb.textContent = 'الترتيب غير صحيح، حاول مرة أخرى!';
+  }
+}
+
+function selectOpt(optElement, isCorrect) {
+  let parent = optElement.parentElement;
+  parent.querySelectorAll('.opt').forEach(o => {
+    o.style.pointerEvents = 'none';
+    if(o === optElement) {
+      o.classList.add(isCorrect ? 'correct' : 'wrong');
+    }
+  });
+  let fb = parent.querySelector('.quiz-feedback');
+  fb.style.display = 'block';
+  fb.style.background = isCorrect ? '#2ed573' : '#ff4757';
+  fb.style.color = '#fff';
+  fb.textContent = isCorrect ? 'إجابة صحيحة! أحسنت 🌟' : 'إجابة خاطئة، حاول في الأسئلة القادمة!';
+  if(isCorrect) {
+    totalStars += 5;
+    document.getElementById('stars-count').textContent = totalStars;
+  }
 }
 </script>
 </body>
