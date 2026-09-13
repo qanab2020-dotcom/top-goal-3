@@ -9,7 +9,7 @@ body{font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#0f0c29
 header{text-align:center;background:#fff;color:#000;padding:14px;border-radius:16px;box-shadow:0 4px 15px rgba(0,0,0,.3);margin-bottom:10px}
 .stats-bar{display:flex;justify-content:space-around;background:#fff;color:#000;padding:8px;border-radius:12px;margin-bottom:10px;font-weight:bold;font-size:13px;box-shadow:0 2px 8px rgba(0,0,0,.2)}
 .tabs{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin-bottom:10px}
-.tab{padding:6px 12px;background:#fff;color:#000;border:none;border-radius:16px;cursor:pointer;font-weight:bold;font-size:11px;box-shadow:0 2px 5px rgba(0,0,0,.2);transition:all 0.3s}
+.tab{padding:6px 12px;background:#fff;color:#000;border:none;border-radius:16px;cursor:pointer;font-weight:bold;font-size:11px;box-shadow:0 2px 5px rgba(0,0,0,.2);transition:all 0.3s;text-decoration:none;display:inline-block;}
 .tab.active{background:#ff4757;color:#fff;transform:scale(1.05)}
 .unit{display:none;background:#fff;color:#000;padding:14px;border-radius:16px;box-shadow:0 4px 15px rgba(0,0,0,.3)}
 .unit.active{display:block}
@@ -74,7 +74,7 @@ header{text-align:center;background:#fff;color:#000;padding:14px;border-radius:1
 <body>
 <header>
   <h1 style="margin:0;font-size:16px;color:#2c3e50">📚 Top Goal 3 - سادس ابتدائي - المنهج الرسمي 2025</h1>
-  <p style="margin:4px 0 0;font-size:10px;color:#7f8c8d">الكلمات الأساسية + قواعد الوحدات + 6 جمل تدريبية متتالية لكل وحدة + الاختبارات الثلاثية + المشاريع 🎯</p>
+  <p style="margin:4px 0 0;font-size:10px;color:#7f8c8d">كلمات الفهرس الرسمية المعتمدة 100% + القواعد والشرح + التدريبات والاختبارات 🎯</p>
 </header>
 <div class="stats-bar">
   <div>⭐ النقاط: <span id="stars-count">0</span></div>
@@ -87,359 +87,404 @@ header{text-align:center;background:#fff;color:#000;padding:14px;border-radius:1
 let totalStars = 0;
 let totalStreak = 0;
 
+// الكلمات مطابقة تماماً لفهرس الكتاب المعتمد في الصور المرفقة
 const allData = {
-"Welcome":[{"en":"Agree","ar":"يوافق"},{"en":"At the moment","ar":"في هذه اللحظة"},{"en":"Cookie","ar":"بسكويت"},{"en":"Gate","ar":"بوابة"},{"en":"Glass","ar":"زجاج"},{"en":"Go away!","ar":"اذهب بعيداً"},{"en":"Helmet","ar":"خوذة"},{"en":"If you want","ar":"إذا أردت"},{"en":"In a minute","ar":"خلال دقيقة"},{"en":"Journalist","ar":"صحفي"},{"en":"Last name","ar":"اسم العائلة"},{"en":"No problem!","ar":"لا مشكلة"},{"en":"Storyboard","ar":"لوحة القصة"},{"en":"Taxi","ar":"تاكسي"},{"en":"Tie","ar":"ربطة عنق"}],
-"U1 Living Things":[{"en":"Beetle","ar":"خنفساء"},{"en":"Butterfly","ar":"فراشة"},{"en":"Camel","ar":"جمل"},{"en":"Creature","ar":"مخلوق"},{"en":"Desert","ar":"صحراء"},{"en":"Dinosaur","ar":"ديناصور"},{"en":"Eagle","ar":"نسر"},{"en":"Extinct","ar":"منقرض"},{"en":"Fur","ar":"فرو"},{"en":"Furry","ar":"فروي"},{"en":"Heavy","ar":"ثقيل"},{"en":"Insect","ar":"حشرة"},{"en":"Journey","ar":"رحلة"},{"en":"Look after","ar":"يعتني بـ"},{"en":"Look like","ar":"يبدو مثل"},{"en":"Nest","ar":"عش"},{"en":"Octopus","ar":"أخطبوط"},{"en":"Pond","ar":"بركة ماء"},{"en":"Quiet","ar":"هادئ"},{"en":"Scratch","ar":"يخدش"},{"en":"Swan","ar":"بجعة"},{"en":"Tortoise","ar":"سلحفاة برية"},{"en":"Touch","ar":"يلمس"},{"en":"Wild","ar":"بري"},{"en":"Wing","ar":"جناح"}],
-"U2 Lifestyles":[{"en":"Bandage","ar":"ضمادة"},{"en":"Break","ar":"يكسر"},{"en":"Bread","ar":"خبز"},{"en":"Broken","ar":"مكسور"},{"en":"Burn","ar":"حرق"},{"en":"Cereal","ar":"حبوب غذائية"},{"en":"Cut","ar":"جرح"},{"en":"Delicious","ar":"لذيذ"},{"en":"Egg","ar":"بيضة"},{"en":"Elbow","ar":"مرفق"},{"en":"Fall over","ar":"يسقط"},{"en":"Finger","ar":"إصبع"},{"en":"Fork","ar":"شوكة"},{"en":"Hand","ar":"يد"},{"en":"Jam","ar":"مربى"},{"en":"Knee","ar":"ركبة"},{"en":"Knife","ar":"سكين"},{"en":"Medicine","ar":"دواء"},{"en":"Milk","ar":"حليب"},{"en":"Olive","ar":"زيتون"},{"en":"Pepper","ar":"فلفل"},{"en":"Pharmacy","ar":"صيدلية"},{"en":"Pizza","ar":"بيتزا"},{"en":"Restaurant","ar":"مطعم"},{"en":"Salt","ar":"ملح"},{"en":"Soap","ar":"صابون"},{"en":"Soup","ar":"شوربة/حساء"},{"en":"Sore","ar":"مؤلم/ملتهب"},{"en":"Spoon","ar":"ملعقة"},{"en":"Strawberry","ar":"فراولة"},{"en":"Toe","ar":"إصبع القدم"},{"en":"X-ray","ar":"أشعة إكس"}],
-"U3 Interests":[{"en":"Bored","ar":"ملول"},{"en":"Chess","ar":"شطرنج"},{"en":"Classical","ar":"كلاسيكي"},{"en":"Concert","ar":"حفل موسيقي"},{"en":"Drum","ar":"طبل"},{"en":"Experiment","ar":"تجربة علمية"},{"en":"Festival","ar":"مهرجان"},{"en":"Instrument","ar":"آلة موسيقية"},{"en":"Invitation","ar":"دعوة"},{"en":"Jazz","ar":"جاز"},{"en":"Join (a club)","ar":"ينضم إلى نادي"},{"en":"Magazine","ar":"مجلة"},{"en":"Member","ar":"عضو"},{"en":"Midday","ar":"منتصف النهار"},{"en":"Midnight","ar":"منتصف الليل"},{"en":"Online","ar":"متصل"},{"en":"Oud","ar":"عود"},{"en":"Poetry","ar":"شعر"},{"en":"Prize","ar":"جائزة"},{"en":"Program","ar":"برنامج"},{"en":"Puzzle","ar":"لغز"},{"en":"Pyramid","ar":"هرم"},{"en":"Stamp","ar":"طابع بريد"},{"en":"Traditional","ar":"تقليدي"},{"en":"Tune","ar":"لحن"},{"en":"Violin","ar":"كمان"}],
-"U4 Professions":[{"en":"AI specialist","ar":"أخصائي ذكاء اصطناعي"},{"en":"Ambulance","ar":"إسعاف"},{"en":"Artificial intelligence","ar":"ذكاء اصطناعي"},{"en":"Astronaut","ar":"رائد فضاء"},{"en":"Business","ar":"أعمال"},{"en":"Cybersecurity analyst","ar":"محلل أمن سيبراني"},{"en":"Design","ar":"تصميم"},{"en":"Earth","ar":"الأرض"},{"en":"Fire","ar":"نار"},{"en":"Fire station","ar":"محطة إطفاء"},{"en":"Fire truck","ar":"شاحنة إطفاء"},{"en":"Firefighter","ar":"رجل إطفاء"},{"en":"Missing","ar":"مفقود"},{"en":"Planet","ar":"كوكب"},{"en":"Police officer","ar":"ضابط شرطة"},{"en":"Police station","ar":"مركز شرطة"},{"en":"Robotics engineer","ar":"مهندس روبوتات"},{"en":"Rocket","ar":"صاروخ"},{"en":"Satellite","ar":"قمر صناعي"},{"en":"Space","ar":"فضاء"},{"en":"Video message","ar":"رسالة فيديو"}],
-"U5 World Sports":[{"en":"competition","ar":"منافسة"},{"en":"cycle","ar":"يقود دراجة"},{"en":"cycling","ar":"رياضة الدراجات"},{"en":"enter","ar":"يدخل"},{"en":"golf","ar":"جولف"},{"en":"hotel","ar":"فندق"},{"en":"ice skating","ar":"تزلج على الجليد"},{"en":"match","ar":"مباراة"},{"en":"quiz","ar":"اختبار قصير"},{"en":"race (n)","ar":"سباق"},{"en":"race (v)","ar":"يتسابق"},{"en":"sell","ar":"يبيع"},{"en":"skiing","ar":"تزلج"},{"en":"sled","ar":"زلاجة"},{"en":"snowboard","ar":"لوح تزلج"},{"en":"snowboarding","ar":"تزلج لوحي"},{"en":"slowly","ar":"ببطء"},{"en":"soon","ar":"قريباً"},{"en":"stadium","ar":"ملعب"},{"en":"team","ar":"فريق"},{"en":"ticket","ar":"تذكرة"},{"en":"tire","ar":"إطار"},{"en":"volleyball","ar":"كرة الطائرة"},{"en":"whistle","ar":"صفارة"},{"en":"winner","ar":"فائز"}],
-"U6 Environments":[{"en":"adventure","ar":"مغامرة"},{"en":"air","ar":"هواء"},{"en":"believe","ar":"يصدق"},{"en":"bridge","ar":"جسر"},{"en":"castle","ar":"قلعة"},{"en":"cave","ar":"كهف"},{"en":"dark","ar":"مظلم"},{"en":"deep","ar":"عميق"},{"en":"east","ar":"شرق"},{"en":"environment","ar":"بيئة"},{"en":"fog","ar":"ضباب"},{"en":"foggy","ar":"ضبابي"},{"en":"high","ar":"مرتفع"},{"en":"hill","ar":"تل"},{"en":"north","ar":"شمال"},{"en":"ocean","ar":"محيط"},{"en":"path","ar":"مسار"},{"en":"save","ar":"ينقذ"},{"en":"south","ar":"جنوب"},{"en":"stone","ar":"حجر"},{"en":"storm","ar":"عاصفة"},{"en":"stream","ar":"جدول ماء"},{"en":"tomorrow","ar":"غداً"},{"en":"turn left","ar":"يساراً"},{"en":"turn right","ar":"يميناً"},{"en":"west","ar":"غرب"}],
-"U7 Styles":[{"en":"baggy","ar":"واسع"},{"en":"bracelet","ar":"سوار"},{"en":"cheap","ar":"رخيص"},{"en":"expensive","ar":"غالي"},{"en":"fall","ar":"خريف"},{"en":"fit","ar":"يُناسب"},{"en":"flip-flops","ar":"شبشب"},{"en":"gloves","ar":"قفازات"},{"en":"handkerchief","ar":"منديل"},{"en":"oversized","ar":"كبير جداً"},{"en":"pajamas","ar":"بيجاما"},{"en":"pocket","ar":"جيب"},{"en":"size","ar":"مقاس"},{"en":"slim","ar":"نحيف"},{"en":"sneakers","ar":"حذاء رياضي"},{"en":"spots","ar":"نقاط"},{"en":"spring","ar":"ربيع"},{"en":"stripes","ar":"خطوط"},{"en":"summer","ar":"صيف"},{"en":"sunglasses","ar":"نظارات شمسية"},{"en":"tank top","ar":"قميص بدون أكمام"},{"en":"tracksuit","ar":"بدلة رياضية"},{"en":"warm","ar":"دافئ"},{"en":"winter","ar":"شتاء"}],
-"U8 Recent Events":[{"en":"advertisement","ar":"إعلان"},{"en":"application","ar":"طلب تقديم"},{"en":"apply","ar":"يتقدم"},{"en":"art","ar":"فن"},{"en":"assistant","ar":"مساعد"},{"en":"athletics","ar":"ألعاب القوى"},{"en":"borrow","ar":"يستعير"},{"en":"champion","ar":"بطل"},{"en":"classmate","ar":"زميل دراسة"},{"en":"consider","ar":"يعتبر"},{"en":"decide","ar":"يقرر"},{"en":"decisions","ar":"قرارات"},{"en":"exams","ar":"امتحانات"},{"en":"follow","ar":"يتابع"},{"en":"group","ar":"مجموعة"},{"en":"gymnastics","ar":"جمباز"},{"en":"history","ar":"تاريخ"},{"en":"improve","ar":"يتحسن"},{"en":"instead","ar":"بدلاً من ذلك"},{"en":"interested","ar":"مهتم"},{"en":"interesting","ar":"ممتع"},{"en":"invent","ar":"يخترع"},{"en":"keep","ar":"يحتفظ"},{"en":"language","ar":"لغة"},{"en":"presentation","ar":"عرض تقديمي"},{"en":"pressured","ar":"تحت الضغط"},{"en":"scholarship","ar":"منحة دراسية"},{"en":"science","ar":"علوم"},{"en":"semester","ar":"فصل دراسي"},{"en":"several","ar":"عدة"},{"en":"sign up","ar":"يسجل"},{"en":"teenager","ar":"مراهق"}],
-"Goodbye":[{"en":"adventure","ar":"مغامرة"},{"en":"ambulance","ar":"إسعاف"},{"en":"castle","ar":"قلعة"},{"en":"concert","ar":"حفل موسيقي"},{"en":"embarrassed","ar":"محرج"},{"en":"explode","ar":"ينفجر"},{"en":"festival","ar":"مهرجان"},{"en":"fire truck","ar":"شاحنة إطفاء"},{"en":"foggy","ar":"ضبابي"},{"en":"hill","ar":"تل"},{"en":"magazine","ar":"مجلة"},{"en":"microphone","ar":"ميكروفون"},{"en":"north","ar":"شمال"},{"en":"puzzle","ar":"لغز"},{"en":"race","ar":"سباق"},{"en":"snacks","ar":"وجبات خفيفة"},{"en":"snowboard","ar":"لوح تزلج"},{"en":"snowboarding","ar":"تزلج لوحي"},{"en":"snowy","ar":"مثلج"},{"en":"storm","ar":"عاصفة"},{"en":"stormy","ar":"عاصف"},{"en":"sunglasses","ar":"نظارات شمسية"},{"en":"warm","ar":"دافئ"}]
+"Welcome": [
+  {"en": "Agree", "ar": "يوافق"},
+  {"en": "At the moment", "ar": "في هذه اللحظة"},
+  {"en": "Cookie", "ar": "بسكويت"},
+  {"en": "Gate", "ar": "بوابة"},
+  {"en": "Glass", "ar": "زجاج"},
+  {"en": "Go away!", "ar": "اذهب بعيداً"},
+  {"en": "Helmet", "ar": "خوذة"},
+  {"en": "If you want", "ar": "إذا أردت"},
+  {"en": "In a minute", "ar": "خلال دقيقة"},
+  {"en": "Journalist", "ar": "صحفي"},
+  {"en": "Last name", "ar": "اسم العائلة"},
+  {"en": "No problem!", "ar": "لا مشكلة"},
+  {"en": "Storyboard", "ar": "لوحة القصة"},
+  {"en": "Taxi", "ar": "تاكسي"},
+  {"en": "Tie", "ar": "ربطة عنق"}
+],
+"U1 Living Things": [
+  {"en": "Beetle", "ar": "خنفساء"},
+  {"en": "Butterfly", "ar": "فراشة"},
+  {"en": "Camel", "ar": "جمل"},
+  {"en": "Creature", "ar": "مخلوق"},
+  {"en": "Desert", "ar": "صحراء"},
+  {"en": "Dinosaur", "ar": "ديناصور"},
+  {"en": "Eagle", "ar": "نسر"},
+  {"en": "Extinct", "ar": "منقرض"},
+  {"en": "Fur", "ar": "فرو"},
+  {"en": "Furry", "ar": "فروي"},
+  {"en": "Heavy", "ar": "ثقيل"},
+  {"en": "Insect", "ar": "حشرة"},
+  {"en": "Journey", "ar": "رحلة"},
+  {"en": "Look after", "ar": "يعتني بـ"},
+  {"en": "Look like", "ar": "يبدو مثل"},
+  {"en": "Nest", "ar": "عش"},
+  {"en": "Octopus", "ar": "أخطبوط"},
+  {"en": "Pond", "ar": "بركة ماء"},
+  {"en": "Quiet", "ar": "هادئ"},
+  {"en": "Scratch", "ar": "يخدش"},
+  {"en": "Swan", "ar": "بجعة"},
+  {"en": "Tortoise", "ar": "سلحفاة برية"},
+  {"en": "Touch", "ar": "يلمس"},
+  {"en": "Wild", "ar": "بري"},
+  {"en": "Wing", "ar": "جناح"}
+],
+"U2 Lifestyles": [
+  {"en": "Bandage", "ar": "ضمادة"},
+  {"en": "Break", "ar": "يكسر"},
+  {"en": "Bread", "ar": "خبز"},
+  {"en": "Broken", "ar": "مكسور"},
+  {"en": "Burn", "ar": "حرق"},
+  {"en": "Cereal", "ar": "حبوب غذائية"},
+  {"en": "Cut", "ar": "جرح"},
+  {"en": "Delicious", "ar": "لذيذ"},
+  {"en": "Egg", "ar": "بيضة"},
+  {"en": "Elbow", "ar": "مرفق"},
+  {"en": "Fall over", "ar": "يسقط"},
+  {"en": "Finger", "ar": "إصبع"},
+  {"en": "Fork", "ar": "شوكة"},
+  {"en": "Hand", "ar": "يد"},
+  {"en": "Jam", "ar": "مربى"},
+  {"en": "Knee", "ar": "ركبة"},
+  {"en": "Knife", "ar": "سكين"},
+  {"en": "Medicine", "ar": "دواء"},
+  {"en": "Milk", "ar": "حليب"},
+  {"en": "Olive", "ar": "زيتون"},
+  {"en": "Pepper", "ar": "فلفل"},
+  {"en": "Pharmacy", "ar": "صيدلية"},
+  {"en": "Pizza", "ar": "بيتزا"},
+  {"en": "Restaurant", "ar": "مطعم"},
+  {"en": "Salt", "ar": "ملح"},
+  {"en": "Soap", "ar": "صابون"},
+  {"en": "Sore", "ar": "مؤلم/ملتهب"},
+  {"en": "Spoon", "ar": "ملعقة"},
+  {"en": "Strawberry", "ar": "فراولة"},
+  {"en": "Toe", "ar": "إصبع القدم"},
+  {"en": "X-ray", "ar": "أشعة إكس"}
+],
+"U3 Interests": [
+  {"en": "Bored", "ar": "ملول"},
+  {"en": "Chess", "ar": "شطرنج"},
+  {"en": "Classical", "ar": "كلاسيكي"},
+  {"en": "Concert", "ar": "حفل موسيقي"},
+  {"en": "Drum", "ar": "طبل"},
+  {"en": "Experiment", "ar": "تجربة علمية"},
+  {"en": "Festival", "ar": "مهرجان"},
+  {"en": "Instrument", "ar": "آلة موسيقية"},
+  {"en": "Invitation", "ar": "دعوة"},
+  {"en": "Jazz", "ar": "جاز"},
+  {"en": "Join (a club)", "ar": "ينضم إلى نادي"},
+  {"en": "Magazine", "ar": "مجلة"},
+  {"en": "Member", "ar": "عضو"},
+  {"en": "Midday", "ar": "منتصف النهار"},
+  {"en": "Midnight", "ar": "منتصف الليل"},
+  {"en": "Online", "ar": "متصل"},
+  {"en": "Oud", "ar": "عود"},
+  {"en": "Poetry", "ar": "شعر"},
+  {"en": "Prize", "ar": "جائزة"},
+  {"en": "Program", "ar": "برنامج"},
+  {"en": "Puzzle", "ar": "لغز"},
+  {"en": "Pyramid", "ar": "هرم"},
+  {"en": "Stamp", "ar": "طابع بريد"},
+  {"en": "Traditional", "ar": "تقليدي"},
+  {"en": "Tune", "ar": "لحن"},
+  {"en": "Violin", "ar": "كمان"}
+],
+"U4 Professions": [
+  {"en": "AI specialist", "ar": "أخصائي ذكاء اصطناعي"},
+  {"en": "Ambulance", "ar": "إسعاف"},
+  {"en": "Artificial intelligence", "ar": "ذكاء اصطناعي"},
+  {"en": "Astronaut", "ar": "رائد فضاء"},
+  {"en": "Business", "ar": "أعمال"},
+  {"en": "Cybersecurity analyst", "ar": "محلل أمن سيبراني"},
+  {"en": "Design", "ar": "تصميم"},
+  {"en": "Earth", "ar": "الأرض"},
+  {"en": "Fire", "ar": "نار"},
+  {"en": "Fire station", "ar": "محطة إطفاء"},
+  {"en": "Fire truck", "ar": "شاحنة إطفاء"},
+  {"en": "Firefighter", "ar": "رجل إطفاء"},
+  {"en": "Missing", "ar": "مفقود"},
+  {"en": "Planet", "ar": "كوكب"},
+  {"en": "Police officer", "ar": "ضابط شرطة"},
+  {"en": "Police station", "ar": "مركز شرطة"},
+  {"en": "Robotics engineer", "ar": "مهندس روبوتات"},
+  {"en": "Rocket", "ar": "صاروخ"},
+  {"en": "Satellite", "ar": "قمر صناعي"},
+  {"en": "Space", "ar": "فضاء"},
+  {"en": "Video message", "ar": "رسالة فيديو"}
+],
+"U5 World Sports": [
+  {"en": "Competition", "ar": "منافسة"},
+  {"en": "Cycle", "ar": "يقود دراجة"},
+  {"en": "Cycling", "ar": "رياضة الدراجات"},
+  {"en": "Enter", "ar": "يدخل"},
+  {"en": "Fast", "ar": "سريع"},
+  {"en": "Golf", "ar": "جولف"},
+  {"en": "Hotel", "ar": "فندق"},
+  {"en": "Ice skating", "ar": "تزلج على الجليد"},
+  {"en": "Match", "ar": "مباراة"},
+  {"en": "Quickly", "ar": "بسرعة"},
+  {"en": "Quiz", "ar": "اختبار قصير"},
+  {"en": "Race (n)", "ar": "سباق"},
+  {"en": "Race (v)", "ar": "يتسابق"},
+  {"en": "Sell", "ar": "يبيع"},
+  {"en": "Skiing", "ar": "تزلج"},
+  {"en": "Sled", "ar": "زلاجة"},
+  {"en": "Snowboard", "ar": "لوح تزلج"},
+  {"en": "Snowboarding", "ar": "تزلج لوحي"},
+  {"en": "Slowly", "ar": "ببطء"},
+  {"en": "Soon", "ar": "قريباً"},
+  {"en": "Stadium", "ar": "ملعب"},
+  {"en": "Team", "ar": "فريق"},
+  {"en": "Ticket", "ar": "تذكرة"},
+  {"en": "Tire", "ar": "إطار"},
+  {"en": "Volleyball", "ar": "كرة الطائرة"},
+  {"en": "Whistle", "ar": "صفارة"},
+  {"en": "Winner", "ar": "فائز"}
+],
+"U6 Environments": [
+  {"en": "Adventure", "ar": "مغامرة"},
+  {"en": "Air", "ar": "هواء"},
+  {"en": "Believe", "ar": "يصدق"},
+  {"en": "Bridge", "ar": "جسر"},
+  {"en": "Castle", "ar": "قلعة"},
+  {"en": "Cave", "ar": "كهف"},
+  {"en": "Dark", "ar": "مظلم"},
+  {"en": "Deep", "ar": "عميق"},
+  {"en": "East", "ar": "شرق"},
+  {"en": "Environment", "ar": "بيئة"},
+  {"en": "Fog", "ar": "ضباب"},
+  {"en": "Foggy", "ar": "ضبابي"},
+  {"en": "High", "ar": "مرتفع"},
+  {"en": "Hill", "ar": "تل"},
+  {"en": "North", "ar": "شمال"},
+  {"en": "Path", "ar": "مسار"},
+  {"en": "Save", "ar": "ينقذ"},
+  {"en": "South", "ar": "جنوب"},
+  {"en": "Stone", "ar": "حجر"},
+  {"en": "Storm", "ar": "عاصفة"},
+  {"en": "Stream", "ar": "جدول ماء"},
+  {"en": "Tomorrow", "ar": "غداً"},
+  {"en": "Turn left", "ar": "يساراً"},
+  {"en": "Turn right", "ar": "يميناً"},
+  {"en": "West", "ar": "غرب"}
+],
+"U7 Styles": [
+  {"en": "Boggy", "ar": "وحل/طين"},
+  {"en": "Bracelet", "ar": "سوار"},
+  {"en": "Cheap", "ar": "رخيص"},
+  {"en": "Expensive", "ar": "غالي"},
+  {"en": "Fall", "ar": "خريف"},
+  {"en": "Fit", "ar": "يُناسب"},
+  {"en": "Flip-flops", "ar": "شبشب"},
+  {"en": "Gloves", "ar": "قفازات"},
+  {"en": "Handkerchief", "ar": "منديل"},
+  {"en": "Oversized", "ar": "كبير جداً"},
+  {"en": "Pajamas", "ar": "بيجاما"},
+  {"en": "Pocket", "ar": "جيب"},
+  {"en": "Size", "ar": "مقاس"},
+  {"en": "Slim", "ar": "نحيف"},
+  {"en": "Sneakers", "ar": "حذاء رياضي"},
+  {"en": "Spots", "ar": "نقاط"},
+  {"en": "Spring", "ar": "ربيع"},
+  {"en": "Stripes", "ar": "خطوط"},
+  {"en": "Summer", "ar": "صيف"},
+  {"en": "Sunglasses", "ar": "نظارات شمسية"},
+  {"en": "Tank top", "ar": "قميص بدون أكمام"},
+  {"en": "Tracksuit", "ar": "بدلة رياضية"},
+  {"en": "Warm", "ar": "دافئ"}
+],
+"U8 Recent Events": [
+  {"en": "Advertisement", "ar": "إعلان"},
+  {"en": "Application", "ar": "طلب تقديم"},
+  {"en": "Apply", "ar": "يتقدم"},
+  {"en": "Art", "ar": "فن"},
+  {"en": "Assistant", "ar": "مساعد"},
+  {"en": "Athletics", "ar": "ألعاب القوى"},
+  {"en": "Borrow", "ar": "يستعير"},
+  {"en": "Champion", "ar": "بطل"},
+  {"en": "Classmate", "ar": "زميل دراسة"},
+  {"en": "Consider", "ar": "يعتبر"},
+  {"en": "Decide", "ar": "يقرر"},
+  {"en": "Decisions", "ar": "قرارات"},
+  {"en": "Exams", "ar": "امتحانات"},
+  {"en": "Follow", "ar": "يتابع"},
+  {"en": "Grades", "ar": "درجات"},
+  {"en": "Graduate", "ar": "يتخرج"},
+  {"en": "Group", "ar": "مجموعة"},
+  {"en": "Gymnastics", "ar": "جمباز"},
+  {"en": "History", "ar": "تاريخ"},
+  {"en": "Improve", "ar": "يتحسن"},
+  {"en": "Instead", "ar": "بدلاً من ذلك"},
+  {"en": "Interested", "ar": "مهتم"},
+  {"en": "Interesting", "ar": "ممتع"},
+  {"en": "Invent", "ar": "يخترع"},
+  {"en": "Keep", "ar": "يحتفظ"},
+  {"en": "Language", "ar": "لغة"},
+  {"en": "Presentation", "ar": "عرض تقديمي"},
+  {"en": "Pressured", "ar": "تحت الضغط"},
+  {"en": "Scholarship", "ar": "منحة دراسية"},
+  {"en": "Science", "ar": "علوم"},
+  {"en": "Semester", "ar": "فصل دراسي"},
+  {"en": "Several", "ar": "عدة"},
+  {"en": "Sign up", "ar": "يسجل"},
+  {"en": "Teenager", "ar": "مراهق"}
+],
+"Goodbye": [
+  {"en": "Adventure", "ar": "مغامرة"},
+  {"en": "Ambulance", "ar": "إسعاف"},
+  {"en": "Castle", "ar": "قلعة"},
+  {"en": "Concert", "ar": "حفل موسيقي"},
+  {"en": "Embarrassed", "ar": "محرج"},
+  {"en": "Explode", "ar": "ينفجر"},
+  {"en": "Festival", "ar": "مهرجان"},
+  {"en": "Fire truck", "ar": "شاحنة إطفاء"},
+  {"en": "Foggy", "ar": "ضبابي"},
+  {"en": "Hill", "ar": "تل"},
+  {"en": "Magazine", "ar": "مجلة"},
+  {"en": "Microphone", "ar": "ميكروفون"},
+  {"en": "North", "ar": "شمال"},
+  {"en": "Puzzle", "ar": "لغز"},
+  {"en": "Race", "ar": "سباق"},
+  {"en": "Snacks", "ar": "وجبات خفيفة"},
+  {"en": "Snowboard", "ar": "لوح تزلج"},
+  {"en": "Snowboarding", "ar": "تزلج لوحي"},
+  {"en": "Snowy", "ar": "مثلج"},
+  {"en": "Storm", "ar": "عاصفة"},
+  {"en": "Stormy", "ar": "عاصف"},
+  {"en": "Sunglasses", "ar": "نظارات شمسية"},
+  {"en": "Warm", "ar": "دافئ"}
+]
 };
 
 // القواعد الشاملة والمحدثة لكل وحدة
 const rulesData = {
 "Welcome": [
 {
-  title: "Revision: Simple Present vs Present Progressive (المضارع البسيط والمستمر)",
+  title: "Revision: Simple Present vs Present Progressive",
   desc: `<div style="background:#fff;padding:10px;border-radius:8px;color:#2c3e50;direction:rtl;text-align:right;">
-    <div style="margin-bottom:8px;font-size:14px;">
-      <strong>ما هو المضارع البسيط؟</strong> يعبر عن الحقائق والعادات والروتين اليومي.<br>
-      <strong>ما هو المضارع المستمر؟</strong> يعبر عن حدث يحدث الآن في هذه اللحظة.
-    </div>
-    <hr style="border:0;border-top:1px solid #eee;margin:8px 0;">
+    <div style="margin-bottom:8px;font-size:14px;"><strong>مراجعة الأزمنة:</strong> المضارع البسيط للعادات، والمستمر لما يحدث الآن.</div>
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
       <span style="direction:ltr;text-align:left;font-family:monospace;">• I am talking on the phone at the moment.</span>
       <button onclick="speak('I am talking on the phone at the moment')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
     </div>
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
-      <span style="direction:ltr;text-align:left;font-family:monospace;">• He is reading a book.</span>
-      <button onclick="speak('He is reading a book')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
-    </div>
-    <div style="color:#7f8c8d;font-size:12px;margin-top:4px;">At the moment = الآن | مراجعة الأزمنة البسيط والمستمر.</div>
   </div>`
 }
 ],
 "U1 Living Things": [
 {
-  title: "Present Passive - المبني للمجهول في المضارع",
+  title: "Present Passive & Where Clauses",
   desc: `<div style="background:#fff;padding:10px;border-radius:8px;color:#2c3e50;direction:rtl;text-align:right;">
-    <div style="margin-bottom:8px;font-size:14px;">
-      <strong>ما هو؟</strong> نستخدمه عندما يكون الفعل (من قام بالحركة) غير مهم أو غير معروف، ونركز على المفعول به.<br>
-      <strong>التكوين:</strong> (am / is / are + التصريف الثالث للفعل V3).
-    </div>
-    <hr style="border:0;border-top:1px solid #eee;margin:8px 0;">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
-      <span style="direction:ltr;text-align:left;font-family:monospace;">• Insects are eaten by birds.</span>
-      <button onclick="speak('Insects are eaten by birds')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
-    </div>
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
-      <span style="direction:ltr;text-align:left;font-family:monospace;">• The desert is covered with sand.</span>
-      <button onclick="speak('The desert is covered with sand')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
-    </div>
-    <div style="color:#7f8c8d;font-size:12px;margin-top:4px;">Formula: am/is/are + V3 | الحشرات تؤكل - الفاعل غير مهم</div>
-  </div>`
-},
-{
-  title: "Where clauses - جمل الوصل بـ Where",
-  desc: `<div style="background:#fff;padding:10px;border-radius:8px;color:#2c3e50;direction:rtl;text-align:right;">
-    <div style="margin-bottom:8px;font-size:14px;">
-      <strong>ما هي؟</strong> نستخدم كلمة Where بمعنى (المكان الذي) لربط الجمل وتوضيح أين يحدث الشيء.
-    </div>
-    <hr style="border:0;border-top:1px solid #eee;margin:8px 0;">
+    <div style="margin-bottom:8px;font-size:14px;"><strong>المبني للمجهول:</strong> (am/is/are + V3) وربط الأماكن بـ (Where).</div>
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
       <span style="direction:ltr;text-align:left;font-family:monospace;">• The desert is where camels live.</span>
       <button onclick="speak('The desert is where camels live')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
-    </div>
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
-      <span style="direction:ltr;text-align:left;font-family:monospace;">• A nest is where birds lay eggs.</span>
-      <button onclick="speak('A nest is where birds lay eggs')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
     </div>
   </div>`
 }
 ],
 "U2 Lifestyles": [
 {
-  title: "Zero & First Conditional - الحالة الصفرية والأولى",
+  title: "Conditionals & Quantifiers (a few / a little)",
   desc: `<div style="background:#fff;padding:10px;border-radius:8px;color:#2c3e50;direction:rtl;text-align:right;">
-    <div style="margin-bottom:8px;font-size:14px;">
-      <strong>الحالة الصفرية:</strong> تعبر عن حقائق ثابتة (If + مضارع، مضارع).<br>
-      <strong>الحالة الأولى:</strong> تعبر عن احتمال في المستقبل (If + مضارع، will + الفعل).
-    </div>
-    <hr style="border:0;border-top:1px solid #eee;margin:8px 0;">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
-      <span style="direction:ltr;text-align:left;font-family:monospace;">• Zero: If you go to hospital, they give you X-ray.</span>
-      <button onclick="speak('If you go to hospital, they give you X ray')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
-    </div>
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
-      <span style="direction:ltr;text-align:left;font-family:monospace;">• First: If we rest, we will feel better.</span>
-      <button onclick="speak('If we rest, we will feel better')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
-    </div>
-    <div style="color:#7f8c8d;font-size:12px;margin-top:4px;">If + مضارع, مضارع / If + مضارع, will</div>
-  </div>`
-},
-{
-  title: "a few / a little - محددات الكمية",
-  desc: `<div style="background:#fff;padding:10px;border-radius:8px;color:#2c3e50;direction:rtl;text-align:right;">
-    <div style="margin-bottom:8px;font-size:14px;">
-      <strong>a few:</strong> تستخدم مع الأسماء المعدودة (التي تُجمع).<br>
-      <strong>a little:</strong> تستخدم مع الأسماء غير المعدودة (التي لا تُجمع).
-    </div>
-    <hr style="border:0;border-top:1px solid #eee;margin:8px 0;">
+    <div style="margin-bottom:8px;font-size:14px;"><strong>الكميات:</strong> a few للمعدود و a little غير المعدود.</div>
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
       <span style="direction:ltr;text-align:left;font-family:monospace;">• I need a few strawberries.</span>
       <button onclick="speak('I need a few strawberries')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
     </div>
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
-      <span style="direction:ltr;text-align:left;font-family:monospace;">• Put a little salt in soup.</span>
-      <button onclick="speak('Put a little salt in soup')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
-    </div>
-    <div style="color:#7f8c8d;font-size:12px;margin-top:4px;">a few (معدود) / a little (غير معدود)</div>
   </div>`
 }
 ],
 "U3 Interests": [
 {
-  title: "Present Perfect since/for - المضارع التام",
+  title: "Present Perfect (since / for / just)",
   desc: `<div style="background:#fff;padding:10px;border-radius:8px;color:#2c3e50;direction:rtl;text-align:right;">
-    <div style="margin-bottom:8px;font-size:14px;">
-      <strong>ما هو؟</strong> يعبر عن حدث بدأ في الماضي وما زال مستمراً حتى الآن.<br>
-      <strong>for:</strong> تأتي مع مدة زمنية محددة. | <strong>since:</strong> تأتي مع نقطة بداية الحدث.
-    </div>
-    <hr style="border:0;border-top:1px solid #eee;margin:8px 0;">
+    <div style="margin-bottom:8px;font-size:14px;"><strong>المضارع التام:</strong> استخدام for للمدة و since للبداية.</div>
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
-      <span style="direction:ltr;text-align:left;font-family:monospace;">• I've taken lessons for 6 years.</span>
+      <span style="direction:ltr;text-align:left;font-family:monospace;">• I have taken lessons for 6 years.</span>
       <button onclick="speak('I have taken lessons for 6 years')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
-    </div>
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
-      <span style="direction:ltr;text-align:left;font-family:monospace;">• She has played since she was baby.</span>
-      <button onclick="speak('She has played since she was baby')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
-    </div>
-    <div style="color:#7f8c8d;font-size:12px;margin-top:4px;">for = مدة / since = بداية</div>
-  </div>`
-},
-{
-  title: "just - للتعبير عن حدث وقع للتو",
-  desc: `<div style="background:#fff;padding:10px;border-radius:8px;color:#2c3e50;direction:rtl;text-align:right;">
-    <div style="margin-bottom:8px;font-size:14px;">
-      <strong>ما هي؟</strong> نستخدم (just) للإشارة إلى أن الفعل قد انتهى للتو منذ لحظات قليلة.
-    </div>
-    <hr style="border:0;border-top:1px solid #eee;margin:8px 0;">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
-      <span style="direction:ltr;text-align:left;font-family:monospace;">• I just returned from trip.</span>
-      <button onclick="speak('I just returned from trip')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
-    </div>
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
-      <span style="direction:ltr;text-align:left;font-family:monospace;">• She has just arrived home.</span>
-      <button onclick="speak('She has just arrived home')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
     </div>
   </div>`
 }
 ],
 "U4 Professions": [
 {
-  title: "Past Progressive + Simple Past - الماضي المستمر والبسيط",
+  title: "Past Progressive + Simple Past & Relative Clauses",
   desc: `<div style="background:#fff;padding:10px;border-radius:8px;color:#2c3e50;direction:rtl;text-align:right;">
-    <div style="margin-bottom:8px;font-size:14px;">
-      <strong>ما هو؟</strong> يعبر عن حدث طويل كان مستمراً في الماضي وقاطعه حدث قصير.
-    </div>
-    <hr style="border:0;border-top:1px solid #eee;margin:8px 0;">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
-      <span style="direction:ltr;text-align:left;font-family:monospace;">• They were traveling when we recorded a video.</span>
-      <button onclick="speak('They were traveling when we recorded a video')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
-    </div>
+    <div style="margin-bottom:8px;font-size:14px;"><strong>الماضي المستمر والبسيط:</strong> was/were + ing مع when.</div>
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
       <span style="direction:ltr;text-align:left;font-family:monospace;">• I was reading when he called.</span>
       <button onclick="speak('I was reading when he called')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
-    </div>
-    <div style="color:#7f8c8d;font-size:12px;margin-top:4px;">was/were + V-ing + when + Past Simple</div>
-  </div>`
-},
-{
-  title: "Relative Clauses who/which/that - ضمائر الوصل",
-  desc: `<div style="background:#fff;padding:10px;border-radius:8px;color:#2c3e50;direction:rtl;text-align:right;">
-    <div style="margin-bottom:8px;font-size:14px;">
-      <strong>who:</strong> تستخدم للعاقل. | <strong>which/that:</strong> تستخدم لغير العاقل.
-    </div>
-    <hr style="border:0;border-top:1px solid #eee;margin:8px 0;">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
-      <span style="direction:ltr;text-align:left;font-family:monospace;">• The firefighter who climbed tree didn't find rabbit.</span>
-      <button onclick="speak('The firefighter who climbed tree did not find rabbit')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
-    </div>
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
-      <span style="direction:ltr;text-align:left;font-family:monospace;">• The truck which was parked didn't move.</span>
-      <button onclick="speak('The truck which was parked did not move')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
     </div>
   </div>`
 }
 ],
 "U5 World Sports": [
 {
-  title: "Comparatives & Superlatives - المقارنة والتفضيل",
+  title: "Comparatives, Superlatives & (not) as... as",
   desc: `<div style="background:#fff;padding:10px;border-radius:8px;color:#2c3e50;direction:rtl;text-align:right;">
-    <div style="margin-bottom:8px;font-size:14px;">
-      <strong>المقارنة:</strong> نقارن بين اثنين (er + than). | <strong>التفضيل:</strong> الأفضل بين مجموعة (the + est).
-    </div>
-    <hr style="border:0;border-top:1px solid #eee;margin:8px 0;">
+    <div style="margin-bottom:8px;font-size:14px;"><strong>المقارنة والتفضيل:</strong> er than والمقارنة بالتساوي.</div>
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
       <span style="direction:ltr;text-align:left;font-family:monospace;">• Cheetahs are faster than lions.</span>
       <button onclick="speak('Cheetahs are faster than lions')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
-    </div>
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
-      <span style="direction:ltr;text-align:left;font-family:monospace;">• It is the fastest animal.</span>
-      <button onclick="speak('It is the fastest animal')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
-    </div>
-  </div>`
-},
-{
-  title: "(not) as... as - صيغة المساواة",
-  desc: `<div style="background:#fff;padding:10px;border-radius:8px;color:#2c3e50;direction:rtl;text-align:right;">
-    <div style="margin-bottom:8px;font-size:14px;">
-      تستخدم لوصف التساوي أو عدم التساوي بين شيئين باستخدام الصفة بين الكلمتين.
-    </div>
-    <hr style="border:0;border-top:1px solid #eee;margin:8px 0;">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
-      <span style="direction:ltr;text-align:left;font-family:monospace;">• Volleyball is not as fast as basketball.</span>
-      <button onclick="speak('Volleyball is not as fast as basketball')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
-    </div>
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
-      <span style="direction:ltr;text-align:left;font-family:monospace;">• You are as tall as me.</span>
-      <button onclick="speak('You are as tall as me')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
     </div>
   </div>`
 }
 ],
 "U6 Environments": [
 {
-  title: "Future Forms Review - مراجعة صيغ المستقبل",
+  title: "Future Forms & may / might / could",
   desc: `<div style="background:#fff;padding:10px;border-radius:8px;color:#2c3e50;direction:rtl;text-align:right;">
-    <div style="margin-bottom:8px;font-size:14px;">
-      طرق التعبير عن المستقبل والخطط والجداول الزمنية.
-    </div>
-    <hr style="border:0;border-top:1px solid #eee;margin:8px 0;">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
-      <span style="direction:ltr;text-align:left;font-family:monospace;">• The castle opens at 9 a.m.</span>
-      <button onclick="speak('The castle opens at 9 a m')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
-    </div>
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
-      <span style="direction:ltr;text-align:left;font-family:monospace;">• It's going to be foggy.</span>
-      <button onclick="speak('It is going to be foggy')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
-    </div>
-  </div>`
-},
-{
-  title: "may/might/could للاحتمال",
-  desc: `<div style="background:#fff;padding:10px;border-radius:8px;color:#2c3e50;direction:rtl;text-align:right;">
-    <div style="margin-bottom:8px;font-size:14px;">
-      تستخدم للتعبير عن احتمالية حدوث الشيء بنسبة غير مؤكدة.
-    </div>
-    <hr style="border:0;border-top:1px solid #eee;margin:8px 0;">
+    <div style="margin-bottom:8px;font-size:14px;"><strong>المستقبل والاحتمال:</strong> التعبير عن الاحتمال بـ may و might.</div>
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
       <span style="direction:ltr;text-align:left;font-family:monospace;">• It may be sunny tomorrow.</span>
       <button onclick="speak('It may be sunny tomorrow')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
-    </div>
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
-      <span style="direction:ltr;text-align:left;font-family:monospace;">• We might see a bridge.</span>
-      <button onclick="speak('We might see a bridge')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
     </div>
   </div>`
 }
 ],
 "U7 Styles": [
 {
-  title: "Reported Speech say/tell - الكلام المنقول",
+  title: "Reported Speech & Reporting Questions",
   desc: `<div style="background:#fff;padding:10px;border-radius:8px;color:#2c3e50;direction:rtl;text-align:right;">
-    <div style="margin-bottom:8px;font-size:14px;">
-      نقل كلام شخص لشخص آخر مع تغيير الزمن والفعل.
-    </div>
-    <hr style="border:0;border-top:1px solid #eee;margin:8px 0;">
+    <div style="margin-bottom:8px;font-size:14px;"><strong>الكلام المنقول:</strong> استخدام say و tell ونقل الأسئلة.</div>
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
       <span style="direction:ltr;text-align:left;font-family:monospace;">• He said he was looking for flip-flops.</span>
       <button onclick="speak('He said he was looking for flip flops')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
-    </div>
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
-      <span style="direction:ltr;text-align:left;font-family:monospace;">• He told me he needed a bigger size.</span>
-      <button onclick="speak('He told me he needed a bigger size')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
-    </div>
-  </div>`
-},
-{
-  title: "Reporting Questions - نقل الأسئلة",
-  desc: `<div style="background:#fff;padding:10px;border-radius:8px;color:#2c3e50;direction:rtl;text-align:right;">
-    <div style="margin-bottom:8px;font-size:14px;">
-      طريقة تحويل السؤال المباشر إلى كلام غير مباشر باستخدام أدوات الاستفهام أو if.
-    </div>
-    <hr style="border:0;border-top:1px solid #eee;margin:8px 0;">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
-      <span style="direction:ltr;text-align:left;font-family:monospace;">• He asked where I bought the bracelet.</span>
-      <button onclick="speak('He asked where I bought the bracelet')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
-    </div>
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
-      <span style="direction:ltr;text-align:left;font-family:monospace;">• She asked if I liked oversized.</span>
-      <button onclick="speak('She asked if I liked oversized')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
     </div>
   </div>`
 }
 ],
 "U8 Recent Events": [
 {
-  title: "Present Perfect already/ever/just/never/yet",
+  title: "Present Perfect & Modals (must / should / have to)",
   desc: `<div style="background:#fff;padding:10px;border-radius:8px;color:#2c3e50;direction:rtl;text-align:right;">
-    <div style="margin-bottom:8px;font-size:14px;">
-      استخدام الكلمات الدالة مع زمن المضارع التام لتوضيح توقيت الحدث.
-    </div>
-    <hr style="border:0;border-top:1px solid #eee;margin:8px 0;">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
-      <span style="direction:ltr;text-align:left;font-family:monospace;">• I've already finished my exams.</span>
-      <button onclick="speak('I have already finished my exams')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
-    </div>
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
-      <span style="direction:ltr;text-align:left;font-family:monospace;">• Have you ever joined a club?</span>
-      <button onclick="speak('Have you ever joined a club')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
-    </div>
-  </div>`
-},
-{
-  title: "Modal verbs can/could/must/have to/should",
-  desc: `<div style="background:#fff;padding:10px;border-radius:8px;color:#2c3e50;direction:rtl;text-align:right;">
-    <div style="margin-bottom:8px;font-size:14px;">
-      الأفعال الناقصة للتعبير عن الإلزام، الاستطاعة، وتقديم النصيحة.
-    </div>
-    <hr style="border:0;border-top:1px solid #eee;margin:8px 0;">
+    <div style="margin-bottom:8px;font-size:14px;"><strong>الأفعال الناقصة والمضارع التام:</strong> لتقديم النصيحة والإلزام.</div>
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
       <span style="direction:ltr;text-align:left;font-family:monospace;">• You must study hard.</span>
       <button onclick="speak('You must study hard')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
-    </div>
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
-      <span style="direction:ltr;text-align:left;font-family:monospace;">• You should consider a scholarship.</span>
-      <button onclick="speak('You should consider a scholarship')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
     </div>
   </div>`
 }
 ],
 "Goodbye": [
 {
-  title: "Revision شامل",
+  title: "Comprehensive Revision",
   desc: `<div style="background:#fff;padding:10px;border-radius:8px;color:#2c3e50;direction:rtl;text-align:right;">
-    <div style="margin-bottom:8px;font-size:14px;">
-      مراجعة شاملة لجميع القواعد والأزمنة استعداداً للاختبار النهائي.
-    </div>
-    <hr style="border:0;border-top:1px solid #eee;margin:8px 0;">
+    <div style="margin-bottom:8px;font-size:14px;"><strong>مراجعة شاملة:</strong> التهيئة للاختبار النهائي بنجاح.</div>
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
       <span style="direction:ltr;text-align:left;font-family:monospace;">• We finished Top Goal successfully.</span>
       <button onclick="speak('We finished Top Goal successfully')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
-    </div>
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;background:#f9f9f9;padding:6px 8px;border-radius:6px;">
-      <span style="direction:ltr;text-align:left;font-family:monospace;">• Good luck in-class or in your final exams.</span>
-      <button onclick="speak('Good luck in your final exams')" style="background:#3498db;color:#fff;border:none;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:11px;">🔊 استمع</button>
     </div>
   </div>`
 }
 ]
 };
+
 // 6 جمل تدريبية متتالية لكل وحدة
 const unitSentencesMap = {
   "Welcome": [
@@ -589,13 +634,11 @@ const projectsData = {
   "U8 Events": { title: "U8: Storyboard حدث أخير", fields: ["عنوان الحدث (تخرجي / رحلتي)", "ماذا حدث أولاً؟", "ماذا حدث أخيراً؟", "شعورك"] }
 };
 
-// حالة مؤشر الجمل لكل وحدة (تبدأ بالجملة رقم 0)
 let currentSentenceIndices = {};
 
 const tabs = document.getElementById('tabs');
 const cont = document.getElementById('cont');
 
-// بناء أقسام الوحدات الدراسية
 for (let unitName in allData) {
   currentSentenceIndices[unitName] = 0;
   
@@ -618,7 +661,6 @@ for (let unitName in allData) {
   
   let htmlContent = `<h2 style="color:#2c3e50;font-size:15px;margin-bottom:10px;text-align:center;">📖 وحدة: ${unitName}</h2>`;
   
-  // شبكة الكلمات (تحتوي على زر الصوت، وزر الميكروفون النطق، وزر العين للكشف)
   htmlContent += `<div class="grid">`;
   allData[unitName].forEach((wordObj, idx) => {
     htmlContent += `
@@ -636,7 +678,6 @@ for (let unitName in allData) {
   });
   htmlContent += `</div>`;
 
-  // قواعد الوحدة
   if (rulesData[unitName]) {
     htmlContent += `<div class="rules-bottom-section"><div class="rules-title">📌 قواعد الوحدة والشرح الرسمي</div>`;
     rulesData[unitName].forEach(rule => {
@@ -645,7 +686,6 @@ for (let unitName in allData) {
     htmlContent += `</div>`;
   }
 
-  // تحدي ترتيب 6 جمل متتالية (جملة تلو الأخرى)
   htmlContent += `
     <div class="challenge-section">
       <div class="challenge-header">
@@ -655,7 +695,6 @@ for (let unitName in allData) {
       <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px;" id="chips-container-${unitIdSafe}">
   `;
   
-  // عرض كلمات الجملة الأولى للبدء
   let firstSentenceWords = unitSentencesMap[unitName][0];
   let shuffledWords = [...firstSentenceWords].sort(() => Math.random() - 0.5);
   shuffledWords.forEach(w => {
@@ -670,7 +709,6 @@ for (let unitName in allData) {
     </div>
   `;
 
-  // المحادثات
   htmlContent += `
     <div class="conv-section">
       <div class="conv-title">💬 محادثات تفاعلية</div>
@@ -681,7 +719,6 @@ for (let unitName in allData) {
     </div>
   `;
 
-  // الصوتيات Phonics
   htmlContent += `
     <div class="phonics-section">
       <div class="phonics-title">🗣️ نطق الصوتيات (Phonics)</div>
@@ -693,7 +730,6 @@ for (let unitName in allData) {
     </div>
   `;
 
-  // القراءة
   htmlContent += `
     <div class="reading-section">
       <div class="reading-title">📖 نصوص القراءة</div>
@@ -703,11 +739,10 @@ for (let unitName in allData) {
     </div>
   `;
 
-  // الاختبارات القصيرة (3 أسئلة)
   let unitQuizzes = quizzesData[unitName] || quizzesData["Welcome"];
   htmlContent += `
     <div class="quiz-section">
-      <div class="quiz-title" style="font-weight:bold;margin-bottom:8px;">🎯 اختبار قصير للوحدة (3 أسئلة)</div>
+      <div class="quiz-title" style="font-weight:bold;margin-bottom:8px;font-size:14px;">🎯 اختبار قصير للوحدة (3 أسئلة)</div>
   `;
   unitQuizzes.forEach((qObj, qIdx) => {
     htmlContent += `
@@ -726,7 +761,6 @@ for (let unitName in allData) {
   cont.appendChild(unitDiv);
 }
 
-// تبويب المشاريع المستقل
 let projBtn = document.createElement('button');
 projBtn.className = 'tab';
 projBtn.textContent = '🎨 المشاريع';
@@ -737,6 +771,14 @@ projBtn.onclick = () => {
   document.getElementById('unit-Projects-Page').classList.add('active');
 };
 tabs.appendChild(projBtn);
+
+// الزر المضاف حديثاً بجانب المشاريع لفتح ملف index6.html
+let topGoal6Btn = document.createElement('a');
+topGoal6Btn.className = 'tab';
+topGoal6Btn.textContent = '⚡ منصة TopGoal 3 الشاملة';
+topGoal6Btn.href = 'index6.html';
+topGoal6Btn.style.textDecoration = 'none';
+tabs.appendChild(topGoal6Btn);
 
 let projUnitDiv = document.createElement('div');
 projUnitDiv.id = 'unit-Projects-Page';
@@ -789,7 +831,6 @@ setTimeout(() => {
   }
 }, 100);
 
-// الدوال العامة
 function speak(text) {
   let utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = 'en-US';
@@ -798,11 +839,10 @@ function speak(text) {
   speechSynthesis.speak(utterance);
 }
 
-// محاكاة أو تشغيل خاصية التعرف على الصوت للميكروفون (Speech Recognition)
 function listenMic(word, elementId) {
   let indicator = document.getElementById('mic-status-' + elementId);
   indicator.style.display = 'block';
-  speak(word); // ينطق الكلمة أولاً ليسمعها الطالب
+  speak(word);
 
   if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
     setTimeout(() => {
@@ -830,19 +870,10 @@ function listenMic(word, elementId) {
     }
   };
 
-  recognition.onerror = function() {
-    indicator.style.display = 'none';
-  };
+  recognition.onerror = function() { indicator.style.display = 'none'; };
+  recognition.onend = function() { indicator.style.display = 'none'; };
 
-  recognition.onend = function() {
-    indicator.style.display = 'none';
-  };
-
-  try {
-    recognition.start();
-  } catch(e) {
-    indicator.style.display = 'none';
-  }
+  try { recognition.start(); } catch(e) { indicator.style.display = 'none'; }
 }
 
 function toggleReveal(unitKey, index) {
@@ -871,8 +902,6 @@ function resetSentence(unitKey) {
 }
 
 function checkSentence(unitKey) {
-  let originalKey = unitKey.replace(/-/g, ' ');
-  // استعادة اسم الوحدة الحقيقي
   let realUnitKey = Object.keys(unitSentencesMap).find(k => k.replace(/\s+/g, '-') === unitKey);
   if(!realUnitKey) return;
 
@@ -900,7 +929,6 @@ function checkSentence(unitKey) {
       fb.style.color = '#fff';
       fb.textContent = `إجابة صحيحة! تم الانتقال تلقائياً للجملة التالية (${currentIndex + 1} من 6) 🎉`;
       
-      // تحميل الجملة التالية
       setTimeout(() => {
         resetSentence(unitKey);
         document.getElementById('challenge-title-' + unitKey).textContent = `🧩 تدريب ترتيب الجمل (الجملة ${currentIndex + 1} من 6)`;
